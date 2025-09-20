@@ -3,6 +3,7 @@ import {Box, Button, Option, Select} from "@mui/joy";
 import {useTranslation} from "react-i18next";
 import {type ChangeEvent, useRef, useState} from "react";
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
+import {fileManagerUseCase} from "../usecase/FileManagerUseCase.ts";
 
 export const FileUpload = () => {
     const inputRefFile = useRef<HTMLInputElement | null>(null)
@@ -25,7 +26,14 @@ export const FileUpload = () => {
             reader.onload = function (event) {
                 const fileBase64 = event?.target?.result;
 
-                console.log(fileBase64)
+                fileManagerUseCase.sendFile({
+                    contentType: file.type,
+                    name: file.name,
+                    type: type,
+                    data: fileBase64 as string
+                }).then((response) => {
+                    console.log(response)
+                })
             };
         }
     }

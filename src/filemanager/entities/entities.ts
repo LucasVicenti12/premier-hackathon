@@ -1,6 +1,18 @@
 export interface FileToUpload {
     name: string,
-    type: EntityType
+    type: EntityType,
+    contentType?: string,
+    data?: string
+}
+
+export interface GetFileURLResponse {
+    url?: string,
+    error?: string
+}
+
+export interface UploadFileResponse{
+    status?: number,
+    error?: string
 }
 
 export enum EntityType {
