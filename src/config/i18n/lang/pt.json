@@ -22,12 +22,14 @@
     "PROCESSING": "Processando",
     "ERROR":  "Erro no processamento",
     "FINISHED": "Finalizado",
-    "code": "código",
+    "code": "Código",
     "codigo_ibge": "Código do IBGE",
     "name": "Nome",
     "gender": "Género",
     "neighborhood": "Bairro",
     "bed_capacity": "Capacidade de leitos",
-    "patient_title": "Pacientes"
+    "patient_title": "Pacientes",
+    "city": "Cidade",
+    "uf": "Código UF"
   }
 }

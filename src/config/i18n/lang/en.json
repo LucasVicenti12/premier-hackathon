@@ -28,6 +28,8 @@
     "gender": "Gender",
     "neighborhood": "Neighborhood",
     "bed_capacity": "Bed capacity",
-    "patient_title": "Patient"
+    "patient_title": "Patient",
+    "city": "City",
+    "uf": "UF code"
   }
 }
