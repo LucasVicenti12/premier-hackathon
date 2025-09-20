@@ -30,6 +30,7 @@
     "bed_capacity": "Bed capacity",
     "patient_title": "Patient",
     "city": "City",
-    "uf": "UF code"
+    "uf": "UF code",
+    "expertise": "Expertise"
   }
 }

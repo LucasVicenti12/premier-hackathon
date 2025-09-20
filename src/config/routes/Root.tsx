@@ -3,6 +3,7 @@ import {DefaultPage} from "./default/DefaultPage.tsx";
 import {FileManager} from "../../modules/filemanager/page/FileManager.tsx";
 import {PatientManager} from "../../modules/patient/page/PatientManager.tsx";
 import {Hospitals} from "../../modules/hospitals/page/Hospitals.tsx";
+import {DoctorManager} from "../../modules/doctor/page/DoctorManager.tsx";
 
 export const Root = () => (
     <BrowserRouter basename={"/app"}>
@@ -30,6 +31,12 @@ export const Root = () => (
                     path={"/patientManager"}
                     element={<PatientManager/>}
                 />
+                <Route 
+                    path={"/doctorManager"}
+                    element={<DoctorManager/>}
+                />
+
+
             </Route>
         </Routes>
     </BrowserRouter>
