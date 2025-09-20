@@ -10,6 +10,16 @@
     "upload_file": "Incluir arquivo",
     "home": "Tela inicial",
     "import_files_title": "Importação de arquivos",
-    "import_new_file": "Importar novo arquivo"
+    "import_new_file": "Importar novo arquivo",
+    "file_name": "Nome do arquivo",
+    "status": "Situação",
+    "created_at": "Criado",
+    "processed_at": "Processado",
+    "started_processing_at": "Iniciado processamento",
+    "process_button": "Processar arquivo",
+    "PENDING":  "Pendente",
+    "PROCESSING": "Processando",
+    "ERROR":  "Erro no processamento",
+    "FINISHED": "Finalizado"
   }
 }

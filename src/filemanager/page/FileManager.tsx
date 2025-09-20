@@ -1,13 +1,51 @@
 import {FileUpload} from "../components/FileUpload.tsx";
-import {Box, Typography} from "@mui/joy";
+import {Box, Button, CircularProgress, Typography} from "@mui/joy";
 import {useTranslation} from "react-i18next";
 import {CustomTable} from "../../utils/components/CustomTable.tsx";
-import {useState} from "react";
+import {useAtomValue, useSetAtom} from "jotai";
+import FileManagerState from "../state/FileManagerState.ts";
+import dayjs from "dayjs";
+import {convertFileStatus, FileStatus} from "../entities/entities.ts";
+import {CustomStatusTile} from "../../utils/components/CustomStatusTile.tsx";
+import PublishedWithChangesRoundedIcon from '@mui/icons-material/PublishedWithChangesRounded';
+import {fileManagerUseCase} from "../usecase/FileManagerUseCase.ts";
 
 export const FileManager = () => {
     const {t} = useTranslation()
 
-    const [page, setPage] = useState(0)
+    const setPage = useSetAtom(FileManagerState.Page)
+    const setUpdate = useSetAtom(FileManagerState.Update)
+
+    const filesAtom = useAtomValue(FileManagerState.List)
+
+    const files = filesAtom.state === 'hasData' ? filesAtom.data : null
+
+    const processFile = (fileName: string) => {
+        fileManagerUseCase.processFile(fileName).then((response) => {
+            if (response.error) {
+                console.error(response.error)
+            } else {
+                setUpdate(prev => !prev)
+            }
+        })
+    }
+
+    if (filesAtom.state === 'loading') {
+        return (
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                    height: "100%",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}
+            >
+                <CircularProgress/>
+            </Box>
+        )
+    }
 
     return (
         <Box
@@ -31,70 +69,72 @@ export const FileManager = () => {
                 <FileUpload/>
             </Box>
             <CustomTable
-                page={page}
-                count={10}
+                page={files?.page ?? 0}
+                count={files?.count ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
+                }}
+                sx={{
+                    "& thead th:nth-child(1)": {
+                        width: 450,
+                    },
+                    "& tbody td": {
+                        overflowX: "hidden"
+                    }
                 }}
             >
                 <thead>
                 <tr>
-                    <th>Row</th>
-                    <th>Calories</th>
-                    <th>Fat&nbsp;(g)</th>
+                    <th>{t("file_name")}</th>
+                    <th>{t("created_at")}</th>
+                    <th>{t("started_processing_at")}</th>
+                    <th>{t("processed_at")}</th>
+                    <th>{t("status")}</th>
+                    <th>&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
+                {
+                    files && files.items?.map((l, i) => {
+                        const status = convertFileStatus(l.status)
+
+                        return (
+                            <tr key={`file_list_${i}`}>
+                                <td>{l.fileName}</td>
+                                <td>{dayjs(l.createAt).format("DD/MM/YYYY HH:mm")}</td>
+                                <td>{l.startedProcessingAt ? dayjs(l.startedProcessingAt).format("DD/MM/YYYY HH:mm") : "-"}</td>
+                                <td>{l.processedAt ? dayjs(l.processedAt).format("DD/MM/YYYY HH:mm") : "-"}</td>
+                                <td>
+                                    {
+                                        status && (
+                                            <CustomStatusTile
+                                                label={t(status.label)}
+                                                color={status.color}
+                                            />
+                                        )
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        l.status.toUpperCase() === FileStatus.PENDING && (
+                                            <Button
+                                                size={"sm"}
+                                                startDecorator={
+                                                    <PublishedWithChangesRoundedIcon/>
+                                                }
+                                                onClick={() => {
+                                                    processFile(l.fileName)
+                                                }}
+                                            >
+                                                {t("process_button")}
+                                            </Button>
+                                        )
+                                    }
+                                </td>
+                            </tr>
+                        )
+                    })
+                }
                 </tbody>
             </CustomTable>
         </Box>

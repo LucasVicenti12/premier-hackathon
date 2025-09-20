@@ -4,11 +4,14 @@ import {useTranslation} from "react-i18next";
 import {type ChangeEvent, useRef, useState} from "react";
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import {fileManagerUseCase} from "../usecase/FileManagerUseCase.ts";
+import {useSetAtom} from "jotai";
+import FileManagerState from "../state/FileManagerState.ts";
 
 export const FileUpload = () => {
     const inputRefFile = useRef<HTMLInputElement | null>(null)
 
     const [type, setType] = useState(EntityType.NONE)
+    const setUpdate = useSetAtom(FileManagerState.Update)
 
     const {t} = useTranslation()
 
@@ -30,8 +33,8 @@ export const FileUpload = () => {
                     contentType: file.type,
                     type: type,
                     data: fileBase64 as string
-                }).then((response) => {
-                    console.log(response)
+                }).then(() => {
+                    setUpdate(prev => !prev)
                 })
             };
         }

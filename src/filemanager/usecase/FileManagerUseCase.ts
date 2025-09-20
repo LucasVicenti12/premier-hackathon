@@ -1,4 +1,4 @@
-import {FileToUpload, UploadFileResponse} from "../entities/entities.ts";
+import {FileListResponse, FileToUpload, ProcessFileResponse, UploadFileResponse} from "../entities/entities.ts";
 import {fileManagerRepository} from "../repository/FileManagerRepository.ts";
 
 class FileManagerUseCase {
@@ -14,6 +14,14 @@ class FileManagerUseCase {
         }
 
         return await fileManagerRepository.uploadFile(urlResponse.url, file)
+    }
+
+    async getPaginatedFiles(page: number): Promise<FileListResponse> {
+        return fileManagerRepository.getPaginatedFiles(page)
+    }
+
+    async processFile(fileName: string): Promise<ProcessFileResponse> {
+        return fileManagerRepository.processFile(fileName)
     }
 }
 

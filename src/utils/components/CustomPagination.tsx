@@ -23,7 +23,7 @@ interface CustomPaginationProps {
 
 export const CustomPagination = memo((props: CustomPaginationProps) => {
     const {items} = usePagination({
-        count: props.count,
+        count: Math.ceil(props.count / 10),
         onChange: props.onChange,
         page: props.page
     });

@@ -10,6 +10,16 @@
     "upload_file": "Submit file",
     "home": "Home",
     "import_files_title": "Files import",
-    "import_new_file": "Import new file"
+    "import_new_file": "Import new file",
+    "file_name": "File name",
+    "status": "Status",
+    "created_at": "Created",
+    "processed_at": "Processed",
+    "started_processing_at": "Stated processing",
+    "process_button": "Process file",
+    "PENDING":  "Pending",
+    "PROCESSING": "Processing",
+    "ERROR":  "Processing error",
+    "FINISHED": "Finished"
   }
 }
