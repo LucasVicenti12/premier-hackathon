@@ -1,43 +1,40 @@
 import {
-  Typography,
-  Sheet,
-  Table
+    Sheet,
+    Table, TableProps
 } from '@mui/joy';
+import {Pagination} from "@mui/material";
 
-export function CustomTable() {
-  return (
-    <div>
-      <Sheet sx={{ height: 300, overflow: 'auto', width: 1200}}>
+export const CustomTable = (props: TableProps) => (
+    <Sheet
+        sx={{
+            height: 500,
+            borderRadius: "8px",
+            position: "relative",
+            overflowY: "auto"
+        }}
+    >
         <Table
-          aria-label="table with sticky header"
-          stickyHeader
-          stickyFooter
-          stripe="odd"
-          hoverRow
+            {...props}
+            aria-label="table with sticky header"
+            stickyHeader
+            hoverRow
+            sx={
+                {
+                    ...props.sx,
+                    ...{
+                        "& thead th": {
+                            backgroundColor: "#033e8c",
+                            color: "#ffffff"
+                        },
+                        "& tbody td": {
+                            borderRadius: "none"
+                        }
+                    }
+                }
+            }
         >
-          <thead>
-            <tr>
-              <th>Row</th>
-              <th>Calories</th>
-              <th>Fat&nbsp;(g)</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr>
-                <td>teste</td>
-                <td>teste</td>
-                <td>teste</td>
-              </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>{1}</td>
-              <td>{2}</td>
-              <td>{3}</td>
-            </tr>
-          </tfoot>
+            {props.children}
         </Table>
-      </Sheet>
-    </div>
-  );
-}
+        {/*<Pagination />*/}
+    </Sheet>
+)
