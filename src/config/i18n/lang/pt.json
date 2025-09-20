@@ -1,0 +1,12 @@
+{
+  "translation": {
+    "NONE": "Selecionar",
+    "PATIENT": "Paciente",
+    "HOSPITAL": "Hospital",
+    "STATE": "Estado",
+    "CITY": "Cidade",
+    "DOCTOR": "Medido",
+    "CID_TABLE": "Tabela (CID)",
+    "upload_file": "Incluir arquivo"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "translation": {
+    "NONE": "Select",
+    "PATIENT": "Patient",
+    "HOSPITAL": "Hospital",
+    "STATE": "State",
+    "CITY": "City",
+    "DOCTOR": "Doctor",
+    "CID_TABLE": "CID table",
+    "upload_file": "Submit file"
+  }
+}
