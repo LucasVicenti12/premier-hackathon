@@ -24,15 +24,15 @@ class FileManagerRepository {
     async uploadFile(url: string, file: FileToUpload): Promise<UploadFileResponse> {
         try {
             const response = await fetch(url, {
-                method: "PUT", // PUT, não POST
-                body: file.data, // arquivo bruto (Blob, ArrayBuffer ou File)
+                method: "PUT",
+                body: file.data,
                 headers: {
-                    "Content-Type": file.contentType // deve ser igual ao Content-Type da URL pré-assinada
+                    "Content-Type": file.contentType as string
                 }
             });
 
             if (!response.ok) {
-                throw new Error(`Upload failed with status ${response.status}`);
+                return {error: `Upload failed with status ${response.status}`}
             }
 
             return { status: response.status };
