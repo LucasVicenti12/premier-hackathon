@@ -23,17 +23,22 @@ class FileManagerRepository {
 
     async uploadFile(url: string, file: FileToUpload): Promise<UploadFileResponse> {
         try {
-            const response = await http.post(
-                url,
-                {
-                    data: file.data
+            const response = await fetch(url, {
+                method: "PUT", // PUT, não POST
+                body: file.data, // arquivo bruto (Blob, ArrayBuffer ou File)
+                headers: {
+                    "Content-Type": file.contentType // deve ser igual ao Content-Type da URL pré-assinada
                 }
-            )
+            });
 
-            return {status: response.data.status ?? 0}
+            if (!response.ok) {
+                throw new Error(`Upload failed with status ${response.status}`);
+            }
+
+            return { status: response.status };
         } catch (e) {
-            console.error(e)
-            return {error: "UNEXPECTED_ERROR"}
+            console.error(e);
+            return { error: "UNEXPECTED_ERROR" };
         }
     }
 }
