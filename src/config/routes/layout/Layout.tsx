@@ -17,6 +17,8 @@ import HomeRounded from "@mui/icons-material/HomeRounded"
 import KeyboardArrowLeftRoundedIcon from '@mui/icons-material/KeyboardArrowLeftRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded';
+import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
+import EmergencyRoundedIcon from '@mui/icons-material/EmergencyRounded';
 
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -177,7 +179,7 @@ const SideNav = (props: BoxProps) => {
                         '--ListItem-radius': (theme) => theme.vars.radius.sm,
                     }}
                 >
-                    <ListItem onClick={() => navigate("/fileManager")}>
+                    <ListItem onClick={() => navigate("/home")}>
                         {
                             open ? (
                                 <ListItemButton>
@@ -194,6 +196,48 @@ const SideNav = (props: BoxProps) => {
                             ) : (
                                 <ListItemButton>
                                     <HomeRounded fontSize={"small"}/>
+                                </ListItemButton>
+                            )
+                        }
+                    </ListItem>
+                    <ListItem onClick={() => navigate("/hospital")}>
+                        {
+                            open ? (
+                                <ListItemButton>
+                                    <EmergencyRoundedIcon fontSize={"small"}/>
+                                    <ListItemContent>
+                                        <Typography
+                                            level="title-sm"
+                                            sx={{textWrap: "nowrap"}}
+                                        >
+                                            {t("hospitals")}
+                                        </Typography>
+                                    </ListItemContent>
+                                </ListItemButton>
+                            ) : (
+                                <ListItemButton>
+                                    <EmergencyRoundedIcon fontSize={"small"}/>
+                                </ListItemButton>
+                            )
+                        }
+                    </ListItem>
+                    <ListItem onClick={() => navigate("/fileManager")}>
+                        {
+                            open ? (
+                                <ListItemButton>
+                                    <FileUploadRoundedIcon fontSize={"small"}/>
+                                    <ListItemContent>
+                                        <Typography
+                                            level="title-sm"
+                                            sx={{textWrap: "nowrap"}}
+                                        >
+                                            {t("import_files_title")}
+                                        </Typography>
+                                    </ListItemContent>
+                                </ListItemButton>
+                            ) : (
+                                <ListItemButton>
+                                    <FileUploadRoundedIcon fontSize={"small"}/>
                                 </ListItemButton>
                             )
                         }

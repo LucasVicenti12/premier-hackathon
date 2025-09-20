@@ -29,12 +29,17 @@ export const FileUpload = () => {
             reader.onload = function (event) {
                 const fileBase64 = event?.target?.result;
 
+                const extension = file.name.split(".").pop()?.toLowerCase() ?? ""
+
                 fileManagerUseCase.sendFile({
                     contentType: file.type,
+                    extension: extension,
                     type: type,
                     data: fileBase64 as string
-                }).then(() => {
-                    setUpdate(prev => !prev)
+                }).then((response) => {
+                    if (response.status === 200) {
+                        setUpdate(prev => !prev)
+                    }
                 })
             };
         }

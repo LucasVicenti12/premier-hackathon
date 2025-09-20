@@ -1,5 +1,6 @@
 export interface FileToUpload {
-    type: EntityType
+    type: EntityType,
+    extension: string,
     contentType?: string
     data?: string
 }
@@ -27,7 +28,7 @@ export enum EntityType {
 export interface ProcessFile {
     fileName: string
     status: string
-    createAt: string
+    createdAt: string
     processedAt: string
     startedProcessingAt: string
 }
@@ -41,8 +42,8 @@ export enum FileStatus {
 
 export interface FileListResponse {
     items?: ProcessFile[]
-    count?: number,
-    page?: number,
+    count?: number
+    page?: number
     totalCount?: number
     error?: string
 }

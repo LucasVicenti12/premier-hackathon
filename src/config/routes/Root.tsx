@@ -11,6 +11,11 @@ export const Root = () => (
                 element={<DefaultPage/>}
             >
                 <Route
+                    path={"/home"}
+                    element={<div></div>}
+                />
+
+                <Route
                     path={"/fileManager"}
                     element={<FileManager/>}
                 />

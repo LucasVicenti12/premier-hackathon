@@ -15,7 +15,7 @@ class FileManagerRepository {
             const response = await http.post(
                 "/upload",
                 {
-                    file_name: file.type + "-" + uuid.v4(),
+                    file_name: `${file.type}-${uuid.v4()}.${file.extension}`,
                     file_type: file.contentType
                 }
             )

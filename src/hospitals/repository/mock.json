@@ -1,0 +1,94 @@
+{
+  "items": [
+    {
+      "code": "HSP-001",
+      "codeIBGE": "3550308",
+      "name": "Hospital das Clínicas de São Paulo",
+      "badCapacity": 1500,
+      "specialities": [
+        "Cardiologia",
+        "Neurologia",
+        "Ortopedia",
+        "Oncologia"
+      ],
+      "neighborhood": "Cerqueira César",
+      "city": {
+        "codeIBGE": "3550308",
+        "state": {
+          "codeUF": "SP",
+          "name": "São Paulo",
+          "latitude": "-23.5505",
+          "longitude": "-46.6333"
+        },
+        "name": "São Paulo",
+        "latitude": "-23.5505",
+        "longitude": "-46.6333",
+        "isCapital": true,
+        "siafiID": "7107",
+        "ddd": "11",
+        "timezone": "America/Sao_Paulo",
+        "population": 12300000
+      }
+    },
+    {
+      "code": "HSP-002",
+      "codeIBGE": "3304557",
+      "name": "Hospital Municipal Souza Aguiar",
+      "badCapacity": 900,
+      "specialities": [
+        "Traumatologia",
+        "Emergência",
+        "Pediatria"
+      ],
+      "neighborhood": "Centro",
+      "city": {
+        "codeIBGE": "3304557",
+        "state": {
+          "codeUF": "RJ",
+          "name": "Rio de Janeiro",
+          "latitude": "-22.9068",
+          "longitude": "-43.1729"
+        },
+        "name": "Rio de Janeiro",
+        "latitude": "-22.9068",
+        "longitude": "-43.1729",
+        "isCapital": true,
+        "siafiID": "6001",
+        "ddd": "21",
+        "timezone": "America/Sao_Paulo",
+        "population": 6748000
+      }
+    },
+    {
+      "code": "HSP-003",
+      "codeIBGE": "3543402",
+      "name": "Hospital Antônio Giglio",
+      "badCapacity": 500,
+      "specialities": [
+        "Clínica Geral",
+        "Maternidade"
+      ],
+      "neighborhood": "Presidente Altino",
+      "city": {
+        "codeIBGE": "3543402",
+        "state": {
+          "codeUF": "SP",
+          "name": "São Paulo",
+          "latitude": "-23.5505",
+          "longitude": "-46.6333"
+        },
+        "name": "Osasco",
+        "latitude": "-23.5320",
+        "longitude": "-46.7916",
+        "isCapital": false,
+        "siafiID": "7109",
+        "ddd": "11",
+        "timezone": "America/Sao_Paulo",
+        "population": 698000
+      }
+    }
+  ],
+  "count": 10,
+  "totalCount": 10,
+  "page": 0
+}
