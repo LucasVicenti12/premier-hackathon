@@ -1,16 +1,21 @@
-import { useAtomValue, useSetAtom } from "jotai"
+import {useAtomValue, useSetAtom} from "jotai"
 import PatientManagerState from "../state/PatientManagerState.ts"
-import { useTranslation } from "react-i18next"
-import { Box, CircularProgress, Typography } from "@mui/joy"
+import {useTranslation} from "react-i18next"
+import {Box, CircularProgress, IconButton, Typography} from "@mui/joy"
 
-import { CustomTable } from "../../../utils/components/CustomTable.tsx"
+import {CustomTable} from "../../../utils/components/CustomTable.tsx"
+import {EntityType} from "../../filemanager/entities/entities.ts";
+import {FileUpload} from "../../filemanager/components/FileUpload.tsx";
+import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
+import {useNavigate} from "react-router-dom";
 
 export const PatientManager = () => {
-
-    const { t } = useTranslation()
+    const {t} = useTranslation()
 
     const setPage = useSetAtom(PatientManagerState.Page)
     const patientAtom = useAtomValue(PatientManagerState.List)
+
+    const navigate = useNavigate()
 
     const patients = patientAtom.state === 'hasData' ? patientAtom.data : null
 
@@ -26,7 +31,7 @@ export const PatientManager = () => {
                     justifyContent: "center"
                 }}
             >
-                <CircularProgress />
+                <CircularProgress/>
             </Box>
         )
     }
@@ -50,6 +55,7 @@ export const PatientManager = () => {
                 <Typography level={"body-lg"} fontWeight={"bold"}>
                     {t("patient_title")}
                 </Typography>
+                <FileUpload entityType={EntityType.PATIENT}/>
             </Box>
 
             <CustomTable
@@ -60,10 +66,13 @@ export const PatientManager = () => {
                 }}
                 sx={{
                     "& thead th:nth-child(1)": {
-                        width: 450,
+                        width: 100,
                     },
-                    "& thead th:nth-child(6)": {
-                        width: 150,
+                    "& thead th:nth-child(2)": {
+                        width: 250,
+                    },
+                    "& thead th:nth-child(7)": {
+                        width: 50,
                     },
                     "& tbody td": {
                         overflowX: "hidden"
@@ -71,30 +80,40 @@ export const PatientManager = () => {
                 }}
             >
                 <thead>
-                    <tr>
-                        <th>{t("code")}</th>
-                        <th>{t("codigo_ibge")}</th>
-                        <th>{t("name")}</th>
-                        <th>{t("neighborhood")}</th>
-                        <th>{t("gender")}</th>
-                        <th>{t("bed_capacity")}</th>
-                        <th>&nbsp;</th>
-                    </tr>
+                <tr>
+                    <th>{t("code")}</th>
+                    <th>{t("codigo_ibge")}</th>
+                    <th>{t("name")}</th>
+                    <th>{t("neighborhood")}</th>
+                    <th>{t("gender")}</th>
+                    <th>{t("bed_capacity")}</th>
+                    <th>&nbsp;</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {
-                        patients && patients.items?.map((l, i) => (
-                                <tr key={`patient_list_${i}`}>
-                                    <td>{l.code}</td>
-                                    <td>{l.name}</td>
-                                    <td>{l.gender}</td>
-                                    <td>{l.codigoIbge}</td>
-                                    <td>{l.neighborhood}</td>
-                                    <td>{l.bedCapacity}</td>
-                                </tr>
-                            )
+                {
+                    patients && patients.items?.map((l, i) => (
+                            <tr key={`patient_list_${i}`}>
+                                <td>{l.code}</td>
+                                <td>{l.name}</td>
+                                <td>{l.gender}</td>
+                                <td>{l.codeIBGE}</td>
+                                <td>{l.neighborhood}</td>
+                                <td>{l.bedCapacity}</td>
+                                <td>
+                                    <IconButton
+                                        size={"sm"}
+                                        onClick={() => {
+                                            navigate(`/patientManager/${l.code}`)
+                                        }}
+                                    >
+                                        <MoreVertRoundedIcon/>
+                                    </IconButton>
+                                </td>
+                            </tr>
                         )
-                    }
+                    )
+                }
                 </tbody>
             </CustomTable>
         </Box>

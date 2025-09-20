@@ -17,3 +17,8 @@ export interface HospitalListResponse{
     totalCount?: number
     error?: string
 }
+
+export interface HospitalResponse {
+    hospital?: Hospital,
+    error?: string
+}

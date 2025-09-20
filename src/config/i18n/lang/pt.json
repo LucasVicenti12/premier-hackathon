@@ -5,13 +5,14 @@
     "HOSPITAL": "Hospital",
     "STATE": "Estado",
     "CITY": "Cidade",
-    "DOCTOR": "Medido",
+    "DOCTOR": "Medico",
     "CID_TABLE": "Tabela (CID)",
     "upload_file": "Incluir arquivo",
     "home": "Tela inicial",
     "import_files_title": "Importação de arquivos",
     "hospitals": "Hospitais",
     "import_new_file": "Importar novo arquivo",
+    "import": "Importar",
     "file_name": "Nome do arquivo",
     "status": "Situação",
     "created_at": "Criado",
@@ -30,6 +31,12 @@
     "bed_capacity": "Capacidade de leitos",
     "patient_title": "Pacientes",
     "city": "Cidade",
-    "uf": "Código UF"
+    "uf": "Código UF",
+    "address": "Endereço",
+    "specialities": "Especialidades",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "hospital_information": "Informações do hospital",
+    "patient_information": "Informações do paciente"
   }
 }

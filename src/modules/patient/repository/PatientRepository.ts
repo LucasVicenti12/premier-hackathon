@@ -1,18 +1,30 @@
 import {
-    PatientListResponse
+    Patient,
+    PatientListResponse, PatientResponse
 } from "../entities/entities.ts";
-import {http} from "../../../config/api/Http.ts";
+import mock from "./mock.json";
 
 class PatientRepository{
     async getPaginatedPatient(page: number): Promise<PatientListResponse> {
-        try{
-            const response = await http.get(`patient?page=${page}&count=10`)
+        console.log(page)
+        const t = mock as unknown
 
-            return response.data as PatientListResponse
-        } catch (e) {
-            console.error(e)
-            return {error: "UNEXPECTED_ERROR"}
-        }
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(t as PatientListResponse)
+            }, 2000)
+        })
+    }
+
+    async getPatientByCode(code: string): Promise<PatientResponse> {
+        const h = mock.items.find(x => x.code === code)
+        const t = (h as unknown) as Patient
+
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({patient: t})
+            }, 2000)
+        })
     }
 }
 

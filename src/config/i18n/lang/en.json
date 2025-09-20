@@ -12,6 +12,7 @@
     "import_files_title": "Files import",
     "hospitals": "Hospitals",
     "import_new_file": "Import new file",
+    "import": "Import",
     "file_name": "File name",
     "status": "Status",
     "created_at": "Created",
@@ -30,6 +31,12 @@
     "bed_capacity": "Bed capacity",
     "patient_title": "Patient",
     "city": "City",
-    "uf": "UF code"
+    "uf": "UF code",
+    "address": "Address",
+    "specialities": "Especialities",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "hospital_information": "Hospital information",
+    "patient_information": "Patient information"
   }
 }
