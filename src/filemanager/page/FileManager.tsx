@@ -2,9 +2,12 @@ import {FileUpload} from "../components/FileUpload.tsx";
 import {Box, Typography} from "@mui/joy";
 import {useTranslation} from "react-i18next";
 import {CustomTable} from "../../utils/components/CustomTable.tsx";
+import {useState} from "react";
 
 export const FileManager = () => {
     const {t} = useTranslation()
+
+    const [page, setPage] = useState(0)
 
     return (
         <Box
@@ -27,7 +30,13 @@ export const FileManager = () => {
                 </Typography>
                 <FileUpload/>
             </Box>
-            <CustomTable>
+            <CustomTable
+                page={page}
+                count={10}
+                onChangePagination={(value) => {
+                    setPage(value)
+                }}
+            >
                 <thead>
                 <tr>
                     <th>Row</th>
@@ -36,146 +45,6 @@ export const FileManager = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
-                <tr>
-                    <td>{1}</td>
-                    <td>{2}</td>
-                    <td>{3}</td>
-                </tr>
                 <tr>
                     <td>{1}</td>
                     <td>{2}</td>
