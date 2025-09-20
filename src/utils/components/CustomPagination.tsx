@@ -14,14 +14,14 @@ const List = styled('ul')({
     alignItems: "center"
 });
 
-interface CrmPaginationProps {
+interface CustomPaginationProps {
     count: number,
     page: number,
 
     onChange(event: ChangeEvent<unknown>, value: number): void
 }
 
-export const CrmPagination = memo((props: CrmPaginationProps) => {
+export const CustomPagination = memo((props: CustomPaginationProps) => {
     const {items} = usePagination({
         count: props.count,
         onChange: props.onChange,
@@ -46,7 +46,9 @@ export const CrmPagination = memo((props: CrmPaginationProps) => {
                                     height: "auto",
                                     padding: "0 6px",
                                     textAlign: "center",
-                                    fontWeight: 400
+                                    fontWeight: 400,
+                                    color: "#ffffff",
+                                    border: "#ffffff"
                                 }}
                             >
                                 ...
@@ -66,7 +68,9 @@ export const CrmPagination = memo((props: CrmPaginationProps) => {
                                     boxSizing: "border-box",
                                     height: "32px",
                                     padding: "0 6px",
-                                    backgroundColor: selected ? "#1976d21f" : undefined
+                                    backgroundColor: selected ? "#ffffff50" : undefined,
+                                    color: "#ffffff",
+                                    borderColor: "#ffffff"
                                 }}
                                 {...item}
                             >
@@ -94,9 +98,9 @@ export const CrmPagination = memo((props: CrmPaginationProps) => {
                                 {...item}
                             >
                                 {type === "previous" ? (
-                                    <NavigateBeforeRoundedIcon/>
+                                    <NavigateBeforeRoundedIcon sx={{color: "#ffffff"}}/>
                                 ) : (
-                                    <NavigateNextRoundedIcon/>
+                                    <NavigateNextRoundedIcon sx={{color: "#ffffff"}}/>
                                 )}
                             </Button>
                         );
