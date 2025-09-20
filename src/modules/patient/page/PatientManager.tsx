@@ -1,9 +1,9 @@
 import { useAtomValue, useSetAtom } from "jotai"
-import PatientManagerState from "../state/PatientManagerState"
+import PatientManagerState from "../state/PatientManagerState.ts"
 import { useTranslation } from "react-i18next"
 import { Box, CircularProgress, Typography } from "@mui/joy"
 
-import { CustomTable } from "../../utils/components/CustomTable"
+import { CustomTable } from "../../../utils/components/CustomTable.tsx"
 
 export const PatientManager = () => {
 

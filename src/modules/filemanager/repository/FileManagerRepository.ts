@@ -5,7 +5,7 @@ import {
     ProcessFileResponse,
     UploadFileResponse
 } from "../entities/entities.ts";
-import {http} from "../../config/api/Http.ts";
+import {http} from "../../../config/api/Http.ts";
 
 import uuid from "react-native-uuid"
 

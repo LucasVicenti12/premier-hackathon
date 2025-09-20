@@ -1,12 +1,12 @@
 import {FileUpload} from "../components/FileUpload.tsx";
 import {Box, Button, CircularProgress, Typography} from "@mui/joy";
 import {useTranslation} from "react-i18next";
-import {CustomTable} from "../../utils/components/CustomTable.tsx";
+import {CustomTable} from "../../../utils/components/CustomTable.tsx";
 import {useAtomValue, useSetAtom} from "jotai";
 import FileManagerState from "../state/FileManagerState.ts";
 import dayjs from "dayjs";
 import {convertFileStatus, FileStatus} from "../entities/entities.ts";
-import {CustomStatusTile} from "../../utils/components/CustomStatusTile.tsx";
+import {CustomStatusTile} from "../../../utils/components/CustomStatusTile.tsx";
 import PublishedWithChangesRoundedIcon from '@mui/icons-material/PublishedWithChangesRounded';
 import {fileManagerUseCase} from "../usecase/FileManagerUseCase.ts";
 

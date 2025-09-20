@@ -1,4 +1,4 @@
-import {City} from "../../utils/entities/entities.ts";
+import {City} from "../../../utils/entities/entities.ts";
 
 export interface Hospital{
     code: string

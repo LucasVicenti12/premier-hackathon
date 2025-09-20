@@ -1,7 +1,7 @@
 import {
     PatientListResponse
 } from "../entities/entities.ts";
-import {http} from "../../config/api/Http.ts";
+import {http} from "../../../config/api/Http.ts";
 
 class PatientRepository{
     async getPaginatedPatient(page: number): Promise<PatientListResponse> {

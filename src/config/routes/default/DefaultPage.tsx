@@ -5,7 +5,7 @@ export const DefaultPage = () => {
     return (
         <Layout.Root>
             <Layout.Header/>
-            <Layout.SideNav></Layout.SideNav>
+            <Layout.SideNav/>
             <Layout.Main>
                 <Outlet/>
             </Layout.Main>

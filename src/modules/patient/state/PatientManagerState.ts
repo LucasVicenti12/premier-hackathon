@@ -1,6 +1,6 @@
 import {atom} from "jotai";
 import { loadable } from "jotai/utils";
-import { patientUseCase } from "../usecase/PatientUsecase";
+import { patientUseCase } from "../usecase/PatientUsecase.ts";
 
 const Update = atom<boolean>(false)
 const Page = atom<number>(0)

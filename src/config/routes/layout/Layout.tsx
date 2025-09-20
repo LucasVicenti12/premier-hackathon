@@ -19,6 +19,7 @@ import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRigh
 import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded';
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import EmergencyRoundedIcon from '@mui/icons-material/EmergencyRounded';
+import PersonalInjuryRoundedIcon from '@mui/icons-material/PersonalInjuryRounded';
 
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -217,6 +218,27 @@ const SideNav = (props: BoxProps) => {
                             ) : (
                                 <ListItemButton>
                                     <EmergencyRoundedIcon fontSize={"small"}/>
+                                </ListItemButton>
+                            )
+                        }
+                    </ListItem>
+                    <ListItem onClick={() => navigate("/patientManager")}>
+                        {
+                            open ? (
+                                <ListItemButton>
+                                    <PersonalInjuryRoundedIcon fontSize={"small"}/>
+                                    <ListItemContent>
+                                        <Typography
+                                            level="title-sm"
+                                            sx={{textWrap: "nowrap"}}
+                                        >
+                                            {t("patient_title")}
+                                        </Typography>
+                                    </ListItemContent>
+                                </ListItemButton>
+                            ) : (
+                                <ListItemButton>
+                                    <PersonalInjuryRoundedIcon fontSize={"small"}/>
                                 </ListItemButton>
                             )
                         }
