@@ -21,6 +21,13 @@
     "PENDING":  "Pendente",
     "PROCESSING": "Processando",
     "ERROR":  "Erro no processamento",
-    "FINISHED": "Finalizado"
+    "FINISHED": "Finalizado",
+    "code": "código",
+    "codigo_ibge": "Código do IBGE",
+    "name": "Nome",
+    "gender": "Género",
+    "neighborhood": "Bairro",
+    "bed_capacity": "Capacidade de leitos",
+    "patient_title": "Paciantes"
   }
 }

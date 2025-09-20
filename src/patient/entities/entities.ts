@@ -1,8 +1,16 @@
 export interface Patient {
     code: string,
-    codigo_ibge: string,
+    codigoIbge: string,
     name: string,
     neighborhood: string,
     gender: string,
-    bad_capacity: string
+    bedCapacity: string
+}
+
+export interface PatientListResponse {
+    items?: Patient[]
+    count?: number,
+    page?: number,
+    totalCount?: number
+    error?: string
 }
