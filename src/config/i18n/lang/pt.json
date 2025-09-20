@@ -7,6 +7,9 @@
     "CITY": "Cidade",
     "DOCTOR": "Medido",
     "CID_TABLE": "Tabela (CID)",
-    "upload_file": "Incluir arquivo"
+    "upload_file": "Incluir arquivo",
+    "home": "Tela inicial",
+    "import_files_title": "Importação de arquivos",
+    "import_new_file": "Importar novo arquivo"
   }
 }

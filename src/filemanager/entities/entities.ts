@@ -1,5 +1,4 @@
 export interface FileToUpload {
-    name: string,
     type: EntityType,
     contentType?: string,
     data?: string

@@ -1,5 +1,5 @@
 import {EntityType} from "../entities/entities.ts";
-import {Box, Button, Option, Select} from "@mui/joy";
+import {Box, Button, Option, Select, Typography} from "@mui/joy";
 import {useTranslation} from "react-i18next";
 import {type ChangeEvent, useRef, useState} from "react";
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
@@ -28,7 +28,6 @@ export const FileUpload = () => {
 
                 fileManagerUseCase.sendFile({
                     contentType: file.type,
-                    name: file.name,
                     type: type,
                     data: fileBase64 as string
                 }).then((response) => {
@@ -51,6 +50,9 @@ export const FileUpload = () => {
                 alignItems: "center"
             }}
         >
+            <Typography level={"body-md"} fontWeight={"normal"}>
+                {t("import_new_file")}
+            </Typography>
             <Select
                 value={type}
                 onChange={(_, value) => {

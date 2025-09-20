@@ -8,6 +8,13 @@ export const ToggleLanguageButton = () => {
 
     return (
         <IconButton
+            sx={{
+                ":hover": {
+                    "& .MuiSvgIcon-root": {
+                        color: "#033e8c"
+                    }
+                }
+            }}
             onClick={() => {
                 if (i18n.language === "pt") {
                     i18n.changeLanguage("en")
@@ -16,7 +23,7 @@ export const ToggleLanguageButton = () => {
                 }
             }}
         >
-            <GTranslateRounded/>
+            <GTranslateRounded sx={{color: "#ffffff"}}/>
         </IconButton>
     );
 }

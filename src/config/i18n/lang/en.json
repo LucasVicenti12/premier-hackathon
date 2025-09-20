@@ -7,6 +7,9 @@
     "CITY": "City",
     "DOCTOR": "Doctor",
     "CID_TABLE": "CID table",
-    "upload_file": "Submit file"
+    "upload_file": "Submit file",
+    "home": "Home",
+    "import_files_title": "Files import",
+    "import_new_file": "Import new file"
   }
 }
