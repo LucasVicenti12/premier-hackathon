@@ -4,7 +4,7 @@
       "code": "HSP-001",
       "codeIBGE": "3550308",
       "name": "Hospital das Clínicas de São Paulo",
-      "badCapacity": 1500,
+      "bedCapacity": 1500,
       "specialities": [
         "Cardiologia",
         "Neurologia",
@@ -34,7 +34,7 @@
       "code": "HSP-002",
       "codeIBGE": "3304557",
       "name": "Hospital Municipal Souza Aguiar",
-      "badCapacity": 900,
+      "bedCapacity": 900,
       "specialities": [
         "Traumatologia",
         "Emergência",
@@ -63,7 +63,7 @@
       "code": "HSP-003",
       "codeIBGE": "3543402",
       "name": "Hospital Antônio Giglio",
-      "badCapacity": 500,
+      "bedCapacity": 500,
       "specialities": [
         "Clínica Geral",
         "Maternidade"

@@ -3,6 +3,9 @@ import {DefaultPage} from "./default/DefaultPage.tsx";
 import {FileManager} from "../../modules/filemanager/page/FileManager.tsx";
 import {PatientManager} from "../../modules/patient/page/PatientManager.tsx";
 import {Hospitals} from "../../modules/hospitals/page/Hospitals.tsx";
+import {HospitalDetail} from "../../modules/hospitals/page/HospitalDetail.tsx";
+import {PatientManagerDetail} from "../../modules/patient/page/PatientManagerDetail.tsx";
+import {DoctorManager} from "../../modules/doctor/page/DoctorManager.tsx";
 import { Home } from "../../modules/home/page/Home.tsx";
 
 export const Root = () => (
@@ -28,9 +31,25 @@ export const Root = () => (
                 />
 
                 <Route
+                    path={"/hospital/:hospitalCode"}
+                    element={<HospitalDetail/>}
+                />
+
+                <Route
+                    path={"/patientManager/:patientCode"}
+                    element={<PatientManagerDetail/>}
+                />
+
+                <Route
                     path={"/patientManager"}
                     element={<PatientManager/>}
                 />
+
+                <Route
+                    path={"/doctorManager"}
+                    element={<DoctorManager/>}
+                />
+
             </Route>
         </Routes>
     </BrowserRouter>

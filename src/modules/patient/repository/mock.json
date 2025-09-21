@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "code": "P001",
+      "codeIBGE": "3550308",
+      "name": "Hospital Municipal São Paulo",
+      "neighborhood": "Bela Vista",
+      "gender": "Misto",
+      "bedCapacity": "250",
+      "city": {
+        "codeIBGE": "3550308",
+        "state": {
+          "codeUF": "SP",
+          "name": "São Paulo",
+          "latitude": "-23.550520",
+          "longitude": "-46.633308"
+        },
+        "name": "São Paulo",
+        "latitude": "-23.550520",
+        "longitude": "-46.633308",
+        "isCapital": true,
+        "siafiID": "7107",
+        "ddd": "11",
+        "timezone": "America/Sao_Paulo",
+        "population": 12300000
+      }
+    },
+    {
+      "code": "P002",
+      "codeIBGE": "3304557",
+      "name": "Hospital Estadual Rio de Janeiro",
+      "neighborhood": "Centro",
+      "gender": "Misto",
+      "bedCapacity": "180",
+      "city": {
+        "codeIBGE": "3304557",
+        "state": {
+          "codeUF": "RJ",
+          "name": "Rio de Janeiro",
+          "latitude": "-22.906847",
+          "longitude": "-43.172897"
+        },
+        "name": "Rio de Janeiro",
+        "latitude": "-22.906847",
+        "longitude": "-43.172897",
+        "isCapital": true,
+        "siafiID": "6001",
+        "ddd": "21",
+        "timezone": "America/Sao_Paulo",
+        "population": 6710000
+      }
+    }
+  ],
+  "count": 2,
+  "page": 1,
+  "totalCount": 2,
+  "error": null
+}

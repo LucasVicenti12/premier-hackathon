@@ -76,7 +76,10 @@ export const FileManager = () => {
                 }}
                 sx={{
                     "& thead th:nth-child(1)": {
-                        width: 450,
+                        width: 400,
+                    },
+                    "& thead th:nth-child(5)": {
+                        width: 100,
                     },
                     "& tbody td": {
                         overflowX: "hidden"

@@ -20,6 +20,7 @@ import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded';
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import EmergencyRoundedIcon from '@mui/icons-material/EmergencyRounded';
 import PersonalInjuryRoundedIcon from '@mui/icons-material/PersonalInjuryRounded';
+import MasksRoundedIcon from '@mui/icons-material/MasksRounded';
 
 import {useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -97,6 +98,34 @@ const SideNav = (props: BoxProps) => {
 
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
+
+    const routes = [
+        {
+            path: "/home",
+            icon: HomeRounded,
+            label: t("home")
+        },
+        {
+            path: "/hospital",
+            icon: EmergencyRoundedIcon,
+            label: t("hospitals")
+        },
+        {
+            path: "/doctorManager",
+            icon: MasksRoundedIcon,
+            label: t("doctors")
+        },
+        {
+            path: "/patientManager",
+            icon: PersonalInjuryRoundedIcon,
+            label: t("patient_title")
+        },
+        {
+            path: "/fileManager",
+            icon: FileUploadRoundedIcon,
+            label: t("import_files_title")
+        }
+    ]
 
     return (
         <Box
@@ -180,90 +209,36 @@ const SideNav = (props: BoxProps) => {
                         '--ListItem-radius': (theme) => theme.vars.radius.sm,
                     }}
                 >
-                    <ListItem onClick={() => navigate("/home")}>
-                        {
-                            open ? (
-                                <ListItemButton>
-                                    <HomeRounded fontSize={"small"}/>
-                                    <ListItemContent>
-                                        <Typography
-                                            level="title-sm"
-                                            sx={{textWrap: "nowrap"}}
-                                        >
-                                            {t("home")}
-                                        </Typography>
-                                    </ListItemContent>
-                                </ListItemButton>
-                            ) : (
-                                <ListItemButton>
-                                    <HomeRounded fontSize={"small"}/>
-                                </ListItemButton>
-                            )
-                        }
-                    </ListItem>
-                    <ListItem onClick={() => navigate("/hospital")}>
-                        {
-                            open ? (
-                                <ListItemButton>
-                                    <EmergencyRoundedIcon fontSize={"small"}/>
-                                    <ListItemContent>
-                                        <Typography
-                                            level="title-sm"
-                                            sx={{textWrap: "nowrap"}}
-                                        >
-                                            {t("hospitals")}
-                                        </Typography>
-                                    </ListItemContent>
-                                </ListItemButton>
-                            ) : (
-                                <ListItemButton>
-                                    <EmergencyRoundedIcon fontSize={"small"}/>
-                                </ListItemButton>
-                            )
-                        }
-                    </ListItem>
-                    <ListItem onClick={() => navigate("/patientManager")}>
-                        {
-                            open ? (
-                                <ListItemButton>
-                                    <PersonalInjuryRoundedIcon fontSize={"small"}/>
-                                    <ListItemContent>
-                                        <Typography
-                                            level="title-sm"
-                                            sx={{textWrap: "nowrap"}}
-                                        >
-                                            {t("patient_title")}
-                                        </Typography>
-                                    </ListItemContent>
-                                </ListItemButton>
-                            ) : (
-                                <ListItemButton>
-                                    <PersonalInjuryRoundedIcon fontSize={"small"}/>
-                                </ListItemButton>
-                            )
-                        }
-                    </ListItem>
-                    <ListItem onClick={() => navigate("/fileManager")}>
-                        {
-                            open ? (
-                                <ListItemButton>
-                                    <FileUploadRoundedIcon fontSize={"small"}/>
-                                    <ListItemContent>
-                                        <Typography
-                                            level="title-sm"
-                                            sx={{textWrap: "nowrap"}}
-                                        >
-                                            {t("import_files_title")}
-                                        </Typography>
-                                    </ListItemContent>
-                                </ListItemButton>
-                            ) : (
-                                <ListItemButton>
-                                    <FileUploadRoundedIcon fontSize={"small"}/>
-                                </ListItemButton>
-                            )
-                        }
-                    </ListItem>
+                    {routes.map((r, i) => {
+                        const Icon = r.icon
+
+                        return (
+                            <ListItem
+                                key={`route_list_${i}`}
+                                onClick={() => navigate(r.path)}
+                            >
+                                {
+                                    open ? (
+                                        <ListItemButton>
+                                            {Icon && <Icon fontSize={"small"}/>}
+                                            <ListItemContent>
+                                                <Typography
+                                                    level="title-sm"
+                                                    sx={{textWrap: "nowrap"}}
+                                                >
+                                                    {r.label}
+                                                </Typography>
+                                            </ListItemContent>
+                                        </ListItemButton>
+                                    ) : (
+                                        <ListItemButton>
+                                            {Icon && <Icon fontSize={"small"}/>}
+                                        </ListItemButton>
+                                    )
+                                }
+                            </ListItem>
+                        )
+                    })}
                 </List>
             </Box>
         </Box>

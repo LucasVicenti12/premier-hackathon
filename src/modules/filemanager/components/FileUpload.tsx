@@ -7,10 +7,14 @@ import {fileManagerUseCase} from "../usecase/FileManagerUseCase.ts";
 import {useSetAtom} from "jotai";
 import FileManagerState from "../state/FileManagerState.ts";
 
-export const FileUpload = () => {
+interface FileUploadProps {
+    entityType?: EntityType
+}
+
+export const FileUpload = (props: FileUploadProps) => {
     const inputRefFile = useRef<HTMLInputElement | null>(null)
 
-    const [type, setType] = useState(EntityType.NONE)
+    const [type, setType] = useState(props.entityType ? props.entityType : EntityType.NONE)
     const setUpdate = useSetAtom(FileManagerState.Update)
 
     const {t} = useTranslation()
@@ -58,28 +62,32 @@ export const FileUpload = () => {
                 alignItems: "center"
             }}
         >
-            <Typography level={"body-md"} fontWeight={"normal"}>
-                {t("import_new_file")}
-            </Typography>
-            <Select
-                value={type}
-                onChange={(_, value) => {
-                    if (value) {
-                        setType(value)
+            {!props.entityType && (
+                <Typography level={"body-md"} fontWeight={"normal"}>
+                    {t("import_new_file")}
+                </Typography>
+            )}
+            {!props.entityType && (
+                <Select
+                    value={type}
+                    onChange={(_, value) => {
+                        if (value) {
+                            setType(value)
+                        }
+                    }}
+                    sx={{
+                        width: "200px"
+                    }}
+                >
+                    {
+                        options.map((o, i) => (
+                            <Option value={o.value} key={`entity_type_${i}`}>
+                                {o.label}
+                            </Option>
+                        ))
                     }
-                }}
-                sx={{
-                    width: "200px"
-                }}
-            >
-                {
-                    options.map((o, i) => (
-                        <Option value={o.value} key={`entity_type_${i}`}>
-                            {o.label}
-                        </Option>
-                    ))
-                }
-            </Select>
+                </Select>
+            )}
             <Button
                 disabled={type === EntityType.NONE}
                 onClick={() => {
@@ -87,7 +95,7 @@ export const FileUpload = () => {
                 }}
                 startDecorator={<AttachFileOutlinedIcon/>}
             >
-                {t("upload_file")}
+                {props.entityType ? `${t("import")} ${t(props.entityType as string)}` : t("upload_file")}
             </Button>
             <input
                 id={"file"}
