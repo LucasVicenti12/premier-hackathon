@@ -133,7 +133,7 @@ export const DoctorDetail = () => {
                         fontWeight={"bold"}
                         color={"neutral"}
                     >
-                        {t("bed_capacity")}
+                        {t("expertise")}
                     </Typography>
                     <Typography level={"body-md"} fontWeight={"bold"}>
                         {doctor?.expertise}
