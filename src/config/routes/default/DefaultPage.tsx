@@ -2,6 +2,8 @@ import {Outlet} from "react-router-dom";
 import Layout from "../layout/Layout.tsx";
 
 export const DefaultPage = () => {
+    console.log("running...")
+
     return (
         <Layout.Root>
             <Layout.Header/>
