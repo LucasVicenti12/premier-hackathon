@@ -10,6 +10,7 @@ import {Home} from "../../modules/home/page/Home.tsx";
 import {CidTableManager} from "../../modules/cidtable/page/CidTableManager.tsx";
 import {DoctorDetail} from "../../modules/doctor/page/DoctorDetail.tsx";
 import {StateManager} from "../../modules/state/page/StateManager.tsx";
+import {CityManager} from "../../modules/city/page/CityManager.tsx";
 
 export const Root = () => (
     <BrowserRouter basename={"/app"}>
@@ -51,6 +52,11 @@ export const Root = () => (
                 <Route
                     path={"/state"}
                     element={<StateManager/>}
+                />
+
+                <Route
+                    path={"/city"}
+                    element={<CityManager/>}
                 />
 
                 <Route

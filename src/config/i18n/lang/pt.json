@@ -44,6 +44,7 @@
     "doctor_information": "Informações do médico",
     "description": "Descrição",
     "states": "Estados",
+    "cities": "Cidades",
     "quantity_patient": "Quantidade de pacientes",
     "quantity_doctors": "Quantidade de medicos",
     "quantity_hospitals": "Quantidade de hospitais"
