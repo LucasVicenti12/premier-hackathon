@@ -1,6 +1,5 @@
 import mock from "./mock.json";
-import { DoctorListResponse } from "../entities/entities";
-
+import { Doctor, DoctorListResponse, DoctorResponse } from "../entities/entities";
 class DoctorsRepository {
     async getDoctors(page: number): Promise<DoctorListResponse> {
         console.log(page)
@@ -10,6 +9,17 @@ class DoctorsRepository {
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(t as DoctorListResponse)
+            }, 2000)
+        })
+    }
+
+    async getDoctorByCode(code: string): Promise<DoctorResponse> {
+        const d = mock.items.find(x => x.code == code)
+        const t = (d as unknown) as Doctor
+
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({ doctor: t })
             }, 2000)
         })
     }

@@ -7,10 +7,15 @@ export interface Doctor {
     city: City,
 }
 
-export interface DoctorListResponse{
+export interface DoctorListResponse {
     items?: Doctor[]
     count?: number
     page?: number
     totalCount?: number
+    error?: string
+}
+
+export interface DoctorResponse {
+    doctor?: Doctor,
     error?: string
 }

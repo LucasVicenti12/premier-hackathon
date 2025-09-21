@@ -1,53 +1,59 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {DefaultPage} from "./default/DefaultPage.tsx";
-import {FileManager} from "../../modules/filemanager/page/FileManager.tsx";
-import {PatientManager} from "../../modules/patient/page/PatientManager.tsx";
-import {Hospitals} from "../../modules/hospitals/page/Hospitals.tsx";
-import {HospitalDetail} from "../../modules/hospitals/page/HospitalDetail.tsx";
-import {PatientManagerDetail} from "../../modules/patient/page/PatientManagerDetail.tsx";
-import {DoctorManager} from "../../modules/doctor/page/DoctorManager.tsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { DefaultPage } from "./default/DefaultPage.tsx";
+import { FileManager } from "../../modules/filemanager/page/FileManager.tsx";
+import { PatientManager } from "../../modules/patient/page/PatientManager.tsx";
+import { Hospitals } from "../../modules/hospitals/page/Hospitals.tsx";
+import { HospitalDetail } from "../../modules/hospitals/page/HospitalDetail.tsx";
+import { PatientManagerDetail } from "../../modules/patient/page/PatientManagerDetail.tsx";
+import { DoctorManager } from "../../modules/doctor/page/DoctorManager.tsx";
 import { Home } from "../../modules/home/page/Home.tsx";
+import { DoctorDetail } from "../../modules/doctor/page/DoctorDetail.tsx";
 
 export const Root = () => (
     <BrowserRouter basename={"/app"}>
         <Routes>
             <Route
                 path={""}
-                element={<DefaultPage/>}
+                element={<DefaultPage />}
             >
                 <Route
                     path={"/home"}
-                    element={<Home/>}
+                    element={<Home />}
                 />
 
                 <Route
                     path={"/fileManager"}
-                    element={<FileManager/>}
+                    element={<FileManager />}
                 />
 
                 <Route
                     path={"/hospital"}
-                    element={<Hospitals/>}
+                    element={<Hospitals />}
                 />
 
                 <Route
                     path={"/hospital/:hospitalCode"}
-                    element={<HospitalDetail/>}
+                    element={<HospitalDetail />}
                 />
 
                 <Route
                     path={"/patientManager/:patientCode"}
-                    element={<PatientManagerDetail/>}
+                    element={<PatientManagerDetail />}
                 />
 
                 <Route
                     path={"/patientManager"}
-                    element={<PatientManager/>}
+                    element={<PatientManager />}
                 />
 
                 <Route
                     path={"/doctorManager"}
-                    element={<DoctorManager/>}
+                    element={<DoctorManager />}
+                />
+
+                <Route
+                    path={"/doctorManager/:doctorCode"}
+                    element={<DoctorDetail />}
                 />
 
             </Route>

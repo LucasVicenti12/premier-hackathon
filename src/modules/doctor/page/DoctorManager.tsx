@@ -1,14 +1,18 @@
 import { useTranslation } from "react-i18next";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai/index";
 import DoctorState from "../state/DoctorState";
-import { Box, CircularProgress, Typography } from "@mui/joy";
+import { Box, CircularProgress, IconButton, Typography } from "@mui/joy";
 import { CustomTable } from "../../../utils/components/CustomTable";
-import {EntityType} from "../../filemanager/entities/entities.ts";
-import {FileUpload} from "../../filemanager/components/FileUpload.tsx";
+import { EntityType } from "../../filemanager/entities/entities.ts";
+import { FileUpload } from "../../filemanager/components/FileUpload.tsx";
+import { useNavigate } from "react-router-dom";
+
+import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
 
 export const DoctorManager = () => {
-
     const { t } = useTranslation()
+
+    const navigate = useNavigate()
 
     const setPage = useSetAtom(DoctorState.Page)
 
@@ -50,7 +54,7 @@ export const DoctorManager = () => {
                 <Typography level={"body-lg"} fontWeight={"bold"}>
                     {t("doctors")}
                 </Typography>
-                <FileUpload entityType={EntityType.DOCTOR}/>
+                <FileUpload entityType={EntityType.DOCTOR} />
             </Box>
             <CustomTable
                 page={doctors?.page ?? 0}
@@ -73,6 +77,7 @@ export const DoctorManager = () => {
                         <th>{t("name")}</th>
                         <th>{t("expertise")}</th>
                         <th>{t("city")}</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,12 +88,21 @@ export const DoctorManager = () => {
                                 <td>{d.full_name}</td>
                                 <td>{d.expertise}</td>
                                 <td>{d.city.name}</td>
+                                <td>
+                                    <IconButton
+                                        size={"sm"}
+                                        onClick={() => {
+                                            navigate(`/doctorManager/${d.code}`);
+                                        }}
+                                    >
+                                        <MoreVertRoundedIcon />
+                                    </IconButton>
+                                </td>
                             </tr>
                         ))
                     }
                 </tbody>
             </CustomTable>
-
         </Box>
     )
 }
