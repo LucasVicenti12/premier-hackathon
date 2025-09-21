@@ -22,6 +22,8 @@ import EmergencyRoundedIcon from '@mui/icons-material/EmergencyRounded';
 import PersonalInjuryRoundedIcon from '@mui/icons-material/PersonalInjuryRounded';
 import MasksRoundedIcon from '@mui/icons-material/MasksRounded';
 import VaccinesRoundedIcon from '@mui/icons-material/VaccinesRounded';
+import SouthAmericaRoundedIcon from '@mui/icons-material/SouthAmericaRounded';
+// import LocationCityRoundedIcon from '@mui/icons-material/LocationCityRounded';
 
 import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
@@ -129,10 +131,15 @@ const SideNav = (props: BoxProps) => {
             label: t("CID_TABLE")
         },
         {
+            path: "/state",
+            icon: SouthAmericaRoundedIcon,
+            label: t("states")
+        },
+        {
             path: "/fileManager",
             icon: FileUploadRoundedIcon,
             label: t("import_files_title")
-        }
+        },
     ]
 
     return (

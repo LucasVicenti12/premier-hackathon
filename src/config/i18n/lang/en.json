@@ -19,9 +19,9 @@
     "processed_at": "Processed",
     "started_processing_at": "Stated processing",
     "process_button": "Process file",
-    "PENDING":  "Pending",
+    "PENDING": "Pending",
     "PROCESSING": "Processing",
-    "ERROR":  "Processing error",
+    "ERROR": "Processing error",
     "FINISHED": "Finished",
     "code": "Code",
     "codigo_ibge": "Code IBGE",
@@ -42,6 +42,10 @@
     "patient_information": "Patient information",
     "doctors": "Doctors",
     "doctor_information": "Doctor information",
-    "description": "Description"
+    "description": "Description",
+    "states": "States",
+    "quantity_patient": "Quantity of patients",
+    "quantity_doctors": "Quantity of doctors",
+    "quantity_hospitals": "Quantity of hospitals"
   }
 }

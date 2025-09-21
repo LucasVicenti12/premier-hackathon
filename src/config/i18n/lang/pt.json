@@ -42,6 +42,10 @@
     "patient_information": "Informações do paciente",
     "doctors": "Médicos",
     "doctor_information": "Informações do médico",
-    "description": "Descrição"
+    "description": "Descrição",
+    "states": "Estados",
+    "quantity_patient": "Quantidade de pacientes",
+    "quantity_doctors": "Quantidade de medicos",
+    "quantity_hospitals": "Quantidade de hospitais"
   }
 }
