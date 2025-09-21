@@ -150,7 +150,7 @@ const SideNav = (props: BoxProps) => {
                         xs: 'none',
                         sm: 'initial',
                     },
-                    width: open ? "200px" : "50px",
+                    width: open ? "220px" : "50px",
                     position: "relative",
                     ":hover": {
                         ["& #menu-side-open-icon"]: {

@@ -12,7 +12,7 @@ class PatientRepository{
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(t as PatientListResponse)
-            }, 2000)
+            }, 1000)
         })
     }
 
@@ -23,7 +23,7 @@ class PatientRepository{
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve({patient: t})
-            }, 2000)
+            }, 1000)
         })
     }
 }

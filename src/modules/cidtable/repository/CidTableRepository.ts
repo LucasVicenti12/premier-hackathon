@@ -9,7 +9,7 @@ class CidTableRepository{
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(t as CidTableListResponse)
-            }, 2000)
+            }, 1000)
         })
     }
 }
