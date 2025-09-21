@@ -141,6 +141,11 @@ const SideNav = (props: BoxProps) => {
             label: t("cities")
         },
         {
+            path: "/maps",
+            icon: LocationCityRoundedIcon,
+            label: t("maps")
+        },
+        {
             path: "/fileManager",
             icon: FileUploadRoundedIcon,
             label: t("import_files_title")

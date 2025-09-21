@@ -9,12 +9,9 @@ import {DoctorManager} from "../../modules/doctor/page/DoctorManager.tsx";
 import {Home} from "../../modules/home/page/Home.tsx";
 import {CidTableManager} from "../../modules/cidtable/page/CidTableManager.tsx";
 import {DoctorDetail} from "../../modules/doctor/page/DoctorDetail.tsx";
-<<<<<<< HEAD
 import { Maps } from "../../modules/Maps/page/map.tsx";
-=======
 import {StateManager} from "../../modules/state/page/StateManager.tsx";
 import {CityManager} from "../../modules/city/page/CityManager.tsx";
->>>>>>> 750061e4e7482232399fb71755752effe2a6fa50
 
 export const Root = () => (
     <BrowserRouter basename={"/app"}>

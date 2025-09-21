@@ -48,8 +48,22 @@
     "quantity_patient": "Quantidade de pacientes",
     "quantity_doctors": "Quantidade de medicos",
     "quantity_hospitals": "Quantidade de hospitais",
-    "map_title_hospital": "Map of hospitals",
-    "map_title_state": "Map of states",
-    "map_title": "Maps"
+    "map_title_hospital": "Mapa de hospitais",
+    "map_title_state": "Mapa de estados",
+    "map_title": "Mapas",
+    "map": "Mapas",
+    "state_more_patient": "Estado com mais pacientes",
+    "state_more_doctor": "Estado com mais medicos",
+    "state_more_hospital": "Estado com mais hospitais",
+    "hospital_more_patient": "Hospital com mais paciente",
+    "hospital_less_patient": "Hospital com menos paciente",
+    "hospital_more_doctor": "Hospital com mais medicos",
+    "hospital_less_doctor": "Hospital com menos medicos",
+    "dashboard_hospital": "Dashboard hospitais",
+    "graphics_title_pacient_hospital": "Pacientes por hospitais",
+    "graphics_title_doctor_hospital": "Medicos por hospitais",
+    "graphics_title_pacient_state": "Pacientes por estados",
+    "graphics_title_doctor_state": "Medicos por estados",
+    "graphics_title_hospital_state": "Hospitais por estados"
   }
 }

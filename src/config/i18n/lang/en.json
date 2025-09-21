@@ -50,6 +50,20 @@
     "quantity_hospitals": "Quantity of hospitals",
     "map_title_hospital": "Map of hospitals",
     "map_title_state": "Map of states",
-    "map_title": "Maps"
+    "map_title": "Maps",
+    "map": "Maps",
+    "state_more_patient": "state with more patients",
+    "state_more_doctor": "state with more doctors",
+    "state_more_hospital": "state with more hospitals",
+    "hospital_more_patient": "Hospital with more patients",
+    "hospital_less_patient": "Hospital with less patients",
+    "hospital_more_doctor": "Hospital with more doctors",
+    "hospital_less_doctor": "Hospital with less doctors",
+    "dashboard_hospital": "Dashboard hospital",
+    "graphics_title_pacient_hospital": "Patients for hospitals",
+    "graphics_title_doctor_hospital": "Doctors for hospitals",
+    "graphics_title_pacient_state": "Patients for states",
+    "graphics_title_doctor_state": "Doctors for states",
+    "graphics_title_hospital_state": "Hospitals for states"
   }
 }

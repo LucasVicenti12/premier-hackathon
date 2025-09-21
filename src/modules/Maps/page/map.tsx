@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Select, Option } from "@mui/joy";
+import { Box, Typography, Grid } from "@mui/joy";
 import { useTranslation } from "react-i18next";
 import ChoroplethMap from "../../../utils/components/CustomChoroplethMap";
 import estadosBrazilGeoJSON from "../../../utils/geojson/brazil_states.geojson?raw";
@@ -16,7 +16,17 @@ export const Maps = () => {
     const { t } = useTranslation();
 
     const geoJsonData = JSON.parse(estadosBrazilGeoJSON);
-    
+
+    // const dadosPorEstado = dadosJsonEstado.reduce((acumulador, item) => {
+    //     acumulador[item.name] = {
+    //         patients: item.patients,
+    //         doctor: item.doctors,
+    //         hospitals: item.hospitals
+    //     };
+    //     return acumulador;
+    // }, {});
+
+
     const dadosPorEstado = {
         "São Paulo": { pacientes: 3200, medicos: 1000, hospitais: 58 },
         "Minas Gerais": { pacientes: 5000, medicos: 300, hospitais: 32 },
@@ -26,6 +36,14 @@ export const Maps = () => {
         "Santa Catarina": { pacientes: 750, medicos: 120, hospitais: 10 },
         "Rio Grande do Sul": { pacientes: 820, medicos: 130, hospitais: 12 },
     };
+
+    // const hospitaisParaExibir = dadosJsonHospitals.map(item => ({
+    //     nome: item.nome,
+    //     pacientes: item.pacientes,
+    //     medicos: item.medicos,
+    //     hospitais: item.hospitais,
+    //     coordenadas: [item.latitude, item.longitude]
+    // }));
 
     const hospitaisParaExibir: HospitalData[] = [
         {
@@ -55,9 +73,9 @@ export const Maps = () => {
                         <Typography level="title-md" mb={2}>
                             {t("map_title_state")}
                         </Typography>
-                        <ChoroplethMap 
-                            geoJsonData={geoJsonData} 
-                            data={dadosPorEstado} 
+                        <ChoroplethMap
+                            geoJsonData={geoJsonData}
+                            data={dadosPorEstado}
                             valueKey="pacientes"
                         />
                     </Box>
@@ -67,8 +85,8 @@ export const Maps = () => {
                         <Typography level="title-md" mb={2}>
                             {t("map_title_hospital")}
                         </Typography>
-                        <AccessibleHospitalMap 
-                            hospitalsData={hospitaisParaExibir} 
+                        <AccessibleHospitalMap
+                            hospitalsData={hospitaisParaExibir}
                         />
                     </Box>
                 </Grid>
