@@ -21,8 +21,9 @@ import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import EmergencyRoundedIcon from '@mui/icons-material/EmergencyRounded';
 import PersonalInjuryRoundedIcon from '@mui/icons-material/PersonalInjuryRounded';
 import MasksRoundedIcon from '@mui/icons-material/MasksRounded';
+import VaccinesRoundedIcon from '@mui/icons-material/VaccinesRounded';
 
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {ToggleLanguageButton} from "../../i18n/components/ToogleLanguageButton.tsx";
 
@@ -99,6 +100,8 @@ const SideNav = (props: BoxProps) => {
     const navigate = useNavigate()
     const [open, setOpen] = useState(false)
 
+    const path = useLocation().pathname
+
     const routes = [
         {
             path: "/home",
@@ -119,6 +122,11 @@ const SideNav = (props: BoxProps) => {
             path: "/patientManager",
             icon: PersonalInjuryRoundedIcon,
             label: t("patient_title")
+        },
+        {
+            path: "/cidTable",
+            icon: VaccinesRoundedIcon,
+            label: t("CID_TABLE")
         },
         {
             path: "/fileManager",
@@ -220,11 +228,23 @@ const SideNav = (props: BoxProps) => {
                                 {
                                     open ? (
                                         <ListItemButton>
-                                            {Icon && <Icon fontSize={"small"}/>}
+                                            {Icon && (
+                                                <Icon
+                                                    fontSize={"small"}
+                                                    sx={{
+                                                        color: r.path === path ? "#033e8c" : undefined,
+                                                        fontWeight: r.path === path ? "bold" : undefined,
+                                                    }}
+                                                />
+                                            )}
                                             <ListItemContent>
                                                 <Typography
                                                     level="title-sm"
-                                                    sx={{textWrap: "nowrap"}}
+                                                    sx={{
+                                                        textWrap: "nowrap",
+                                                        color: r.path === path ? "#033e8c" : undefined,
+                                                        fontWeight: r.path === path ? "bold" : undefined,
+                                                    }}
                                                 >
                                                     {r.label}
                                                 </Typography>
@@ -232,7 +252,15 @@ const SideNav = (props: BoxProps) => {
                                         </ListItemButton>
                                     ) : (
                                         <ListItemButton>
-                                            {Icon && <Icon fontSize={"small"}/>}
+                                            {Icon && (
+                                                <Icon
+                                                    fontSize={"small"}
+                                                    sx={{
+                                                        color: r.path === path ? "#033e8c" : undefined,
+                                                        fontWeight: r.path === path ? "bold" : undefined,
+                                                    }}
+                                                />
+                                            )}
                                         </ListItemButton>
                                     )
                                 }

@@ -1,13 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { DefaultPage } from "./default/DefaultPage.tsx";
-import { FileManager } from "../../modules/filemanager/page/FileManager.tsx";
-import { PatientManager } from "../../modules/patient/page/PatientManager.tsx";
-import { Hospitals } from "../../modules/hospitals/page/Hospitals.tsx";
-import { HospitalDetail } from "../../modules/hospitals/page/HospitalDetail.tsx";
-import { PatientManagerDetail } from "../../modules/patient/page/PatientManagerDetail.tsx";
-import { DoctorManager } from "../../modules/doctor/page/DoctorManager.tsx";
-import { Home } from "../../modules/home/page/Home.tsx";
-import { DoctorDetail } from "../../modules/doctor/page/DoctorDetail.tsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {DefaultPage} from "./default/DefaultPage.tsx";
+import {FileManager} from "../../modules/filemanager/page/FileManager.tsx";
+import {PatientManager} from "../../modules/patient/page/PatientManager.tsx";
+import {Hospitals} from "../../modules/hospitals/page/Hospitals.tsx";
+import {HospitalDetail} from "../../modules/hospitals/page/HospitalDetail.tsx";
+import {PatientManagerDetail} from "../../modules/patient/page/PatientManagerDetail.tsx";
+import {DoctorManager} from "../../modules/doctor/page/DoctorManager.tsx";
+import {Home} from "../../modules/home/page/Home.tsx";
+import {CidTableManager} from "../../modules/cidtable/page/CidTableManager.tsx";
+import {DoctorDetail} from "../../modules/doctor/page/DoctorDetail.tsx";
 
 export const Root = () => (
     <BrowserRouter basename={"/app"}>
@@ -43,7 +44,12 @@ export const Root = () => (
 
                 <Route
                     path={"/patientManager"}
-                    element={<PatientManager />}
+                    element={<PatientManager/>}
+                />
+
+                <Route
+                    path={"/cidTable"}
+                    element={<CidTableManager/>}
                 />
 
                 <Route
