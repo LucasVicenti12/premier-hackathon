@@ -1,16 +1,16 @@
-import mock from "./mock.json";
 import {CityListResponse} from "../entities/entities.ts";
+import {http} from "../../../config/api/Http.ts";
 
 class CityRepository {
     async getPaginatedCities(page: number): Promise<CityListResponse> {
-        console.log(page)
-        const t = mock as unknown
+        try {
+            const response = await http.get(`/cities?page=${page}`)
 
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(t as CityListResponse)
-            }, 1000)
-        })
+            return response.data as CityListResponse
+        } catch (e) {
+            console.error(e)
+            return {error: "UNEXPECTED_ERROR"}
+        }
     }
 }
 

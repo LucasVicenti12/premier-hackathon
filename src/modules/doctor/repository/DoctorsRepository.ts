@@ -1,16 +1,17 @@
 import mock from "./mock.json";
 import { Doctor, DoctorListResponse, DoctorResponse } from "../entities/entities";
+import {http} from "../../../config/api/Http.ts";
+
 class DoctorsRepository {
     async getDoctors(page: number): Promise<DoctorListResponse> {
-        console.log(page)
+        try {
+            const response = await http.get(`/doctors?page=${page}`)
 
-        const t = mock as unknown
-
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(t as DoctorListResponse)
-            }, 1000)
-        })
+            return response.data as DoctorListResponse
+        } catch (e) {
+            console.error(e)
+            return {error: "UNEXPECTED_ERROR"}
+        }
     }
 
     async getDoctorByCode(code: string): Promise<DoctorResponse> {

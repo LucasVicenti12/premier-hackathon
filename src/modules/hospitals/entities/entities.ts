@@ -4,7 +4,7 @@ export interface Hospital{
     code: string
     codeIBGE: string
     name: string
-    bedCapacity: number
+    badCapacity: number
     specialities: string[],
     neighborhood: string,
     city: City

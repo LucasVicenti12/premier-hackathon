@@ -58,7 +58,7 @@ export const DoctorManager = () => {
             </Box>
             <CustomTable
                 page={doctors?.page ?? 0}
-                count={doctors?.count ?? 0}
+                count={doctors?.totalCount ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
                 }}

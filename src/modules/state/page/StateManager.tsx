@@ -56,7 +56,7 @@ export const StateManager = () => {
 
             <CustomTable
                 page={states?.page ?? 0}
-                count={states?.count ?? 0}
+                count={states?.totalCount ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
                 }}
@@ -73,6 +73,8 @@ export const StateManager = () => {
                 <tr>
                     <th>{t("code")}</th>
                     <th>{t("name")}</th>
+                    <th>{t("latitude")}</th>
+                    <th>{t("longitude")}</th>
                     <th>{t("quantity_patient")}</th>
                     <th>{t("quantity_doctors")}</th>
                     <th>{t("quantity_hospitals")}</th>
@@ -82,8 +84,10 @@ export const StateManager = () => {
                 {
                     states && states.items?.map((l, i) => (
                             <tr key={`patient_list_${i}`}>
-                                <td>{l.code}</td>
+                                <td>{l.codeUF}</td>
                                 <td>{l.name}</td>
+                                <td>{l.latitude}</td>
+                                <td>{l.longitude}</td>
                                 <td>{l.quantityPatient}</td>
                                 <td>{l.quantityDoctors}</td>
                                 <td>{l.quantityHospitals}</td>

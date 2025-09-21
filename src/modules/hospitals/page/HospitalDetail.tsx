@@ -136,7 +136,7 @@ export const HospitalDetail = () => {
                         {t("bed_capacity")}
                     </Typography>
                     <Typography level={"body-md"} fontWeight={"bold"}>
-                        {hospital?.bedCapacity}
+                        {hospital?.badCapacity}
                     </Typography>
                 </Box>
             </Box>

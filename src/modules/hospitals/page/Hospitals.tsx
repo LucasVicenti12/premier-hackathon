@@ -60,13 +60,13 @@ export const Hospitals = () => {
             </Box>
             <CustomTable
                 page={hospitals?.page ?? 0}
-                count={hospitals?.count ?? 0}
+                count={hospitals?.totalCount ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
                 }}
                 sx={{
                     "& thead th:nth-child(1)": {
-                        width: 150,
+                        width: 300,
                     },
                     "& thead th:nth-child(2)": {
                         width: 350,
@@ -96,10 +96,10 @@ export const Hospitals = () => {
                         <tr key={`hospital_list_${i}`}>
                             <td>{h.code}</td>
                             <td>{h.name}</td>
-                            <td>{h.bedCapacity}</td>
-                            <td>{h.city.name}</td>
-                            <td>{h.neighborhood}</td>
-                            <td>{h.city.state.codeUF}</td>
+                            <td>{h.badCapacity}</td>
+                            <td>{h?.city?.name ?? "-"}</td>
+                            <td>{h?.neighborhood ?? "-"}</td>
+                            <td>{h?.city?.state?.codeUF ?? "-"}</td>
                             <td>
                                 <IconButton
                                     size={"sm"}
