@@ -23,43 +23,45 @@ export default function CustomBarChars({ data }: CustomBarCharsData) {
 
     const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
-        panY: false,
-        layout: root.verticalLayout,
+        // Altera o layout para horizontal, o que já inverte a orientação
+        layout: root.horizontalLayout,
       })
     );
 
-    // Eixo Y
+    // Eixo Y agora será de categorias (os nomes)
     const yAxis = chart.yAxes.push(
-      am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererY.new(root, {}),
-      })
-    );
-
-    // Eixo X
-    const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
-        renderer: am5xy.AxisRendererX.new(root, {}),
+        renderer: am5xy.AxisRendererY.new(root, {
+          // A propriedade `inversed: true` é opcional, mas pode ser útil para ordenar os dados
+          // de baixo para cima, seguindo a ordem do array.
+          inversed: true,
+        }),
         categoryField: "category",
       })
     );
-    xAxis.data.setAll(data);
+    yAxis.data.setAll(data);
+    
+    // Eixo X agora será de valores (os números)
+    const xAxis = chart.xAxes.push(
+      am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererX.new(root, {}),
+      })
+    );
 
-    // Série única de barras
+    // Série de colunas agora com as configurações para um gráfico horizontal
     const series = chart.series.push(
       am5xy.ColumnSeries.new(root, {
         name: "Valor",
         xAxis: xAxis,
         yAxis: yAxis,
-        valueYField: "value",
-        categoryXField: "category",
+        // Altera os campos para a nova orientação dos eixos
+        valueXField: "value",
+        categoryYField: "category",
       })
     );
     series.data.setAll(data);
 
-    // Legend opcional
-    const legend = chart.children.push(am5.Legend.new(root, {}));
-    legend.data.setAll(chart.series.values);
-
+    // Adiciona o cursor para interatividade
     chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
     return () => {
