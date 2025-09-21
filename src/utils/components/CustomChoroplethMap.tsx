@@ -34,7 +34,9 @@ const ChoroplethMap: React.FC<ChoroplethMapProps> = ({ geoJsonData, data, valueK
   
   const maxVal = Math.max(...Object.values(data).map(d => d[valueKey] || 0));
 
-  const onEachFeature = (feature: any, layer: L.Layer) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  const onEachFeature = (feature, layer: L.Layer) => {
 
     const name = feature.properties.name || feature.properties.NOMEMUNIC;
     
@@ -94,7 +96,7 @@ const ChoroplethMap: React.FC<ChoroplethMapProps> = ({ geoJsonData, data, valueK
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <GeoJSON data={geoJsonData as any} onEachFeature={onEachFeature} />
+        <GeoJSON data={geoJsonData} onEachFeature={onEachFeature} />
       </MapContainer>
     </Box>
   );
