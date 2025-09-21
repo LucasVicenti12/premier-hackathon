@@ -50,6 +50,9 @@
     "quantity_hospitals": "Quantity of hospitals",
     "map_title_hospital": "Map of hospitals",
     "map_title_state": "Map of states",
-    "map_title": "Maps"
+    "map_title": "Maps",
+    "portuguese": "Portuguese",
+    "english": "English",
+    "spanish": "Spanish"
   }
 }
