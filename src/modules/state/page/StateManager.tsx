@@ -75,9 +75,6 @@ export const StateManager = () => {
                     <th>{t("name")}</th>
                     <th>{t("latitude")}</th>
                     <th>{t("longitude")}</th>
-                    <th>{t("quantity_patient")}</th>
-                    <th>{t("quantity_doctors")}</th>
-                    <th>{t("quantity_hospitals")}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -88,9 +85,6 @@ export const StateManager = () => {
                                 <td>{l.name}</td>
                                 <td>{l.latitude}</td>
                                 <td>{l.longitude}</td>
-                                <td>{l.quantityPatient}</td>
-                                <td>{l.quantityDoctors}</td>
-                                <td>{l.quantityHospitals}</td>
                             </tr>
                         )
                     )

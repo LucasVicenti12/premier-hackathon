@@ -42,7 +42,9 @@ export const FileUpload = (props: FileUploadProps) => {
                     data: fileBase64 as string
                 }).then((response) => {
                     if (response.status === 200) {
-                        setUpdate(prev => !prev)
+                        setTimeout(() => {
+                            setUpdate(prev => !prev)
+                        }, 1200)
                     }
                 })
             };

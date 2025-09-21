@@ -1,7 +1,7 @@
 export const baseURL = (): string | undefined => {
     if(process.env.NODE_ENV === "production") {
-        return "http://54.207.225.69:5000/"
+        return "https://b7i8sfu5pg.execute-api.sa-east-1.amazonaws.com/"
     } else {
-        return "http://54.207.225.69:5000/"
+        return "https://b7i8sfu5pg.execute-api.sa-east-1.amazonaws.com/"
     }
 };
