@@ -19,9 +19,9 @@
     "processed_at": "Processado",
     "started_processing_at": "Iniciado processamento",
     "process_button": "Processar arquivo",
-    "PENDING":  "Pendente",
+    "PENDING": "Pendente",
     "PROCESSING": "Processando",
-    "ERROR":  "Erro no processamento",
+    "ERROR": "Erro no processamento",
     "FINISHED": "Finalizado",
     "code": "Código",
     "codigo_ibge": "Código do IBGE",
@@ -31,12 +31,14 @@
     "bed_capacity": "Capacidade de leitos",
     "patient_title": "Pacientes",
     "city": "Cidade",
+    "expertise": "Especialidade",
     "uf": "Código UF",
     "address": "Endereço",
     "specialities": "Especialidades",
     "latitude": "Latitude",
     "longitude": "Longitude",
     "hospital_information": "Informações do hospital",
-    "patient_information": "Informações do paciente"
+    "patient_information": "Informações do paciente",
+    "doctors": "Médicos"
   }
 }

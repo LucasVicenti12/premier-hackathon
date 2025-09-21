@@ -1,0 +1,73 @@
+{
+  "items": [
+    {
+      "code": "cfa9a86c-def0-41cb-bfe6-c2a11d962e4f",
+      "full_name": "Fernanda Pereira Araújo",
+      "expertise": "Neurologia",
+      "city": {
+        "codeIBGE": "5200050",
+        "state": {
+          "codeUF": "GO",
+          "name": "Goiás",
+          "latitude": "-16.2573",
+          "longitude": "-49.2643"
+        },
+        "name": "Abadia de Goiás",
+        "latitude": "-16.7573",
+        "longitude": "-49.4412",
+        "isCapital": "false",
+        "siafiID": "1050",
+        "ddd": "62",
+        "timezone": "America/Sao_Paulo",
+        "population": 124150
+      }
+    },
+    {
+      "code": "10d0c078-7d0c-4cba-ba26-ee3e4b0247de",
+      "full_name": "Paulo Gomes Dias",
+      "expertise": "Cardiologia",
+      "city": {
+        "codeIBGE": "3100104",
+        "state": {
+          "codeUF": "MG",
+          "name": "Minas Gerais",
+          "latitude": "-18.5123",
+          "longitude": "-44.5555"
+        },
+        "name": "Abadia dos Dourados",
+        "latitude": "-18.4831",
+        "longitude": "-47.3916",
+        "isCapital": "false",
+        "siafiID": "4001",
+        "ddd": "34",
+        "timezone": "America/Sao_Paulo",
+        "population": 40334
+      }
+    },
+    {
+      "code": "c678f471-3972-4c69-8792-8a06cbf7ba17",
+      "full_name": "Marcos Rodrigues Costa",
+      "expertise": "Ginecologia",
+      "city": {
+        "codeIBGE": "5200100",
+        "state": {
+          "codeUF": "GO",
+          "name": "Goiás",
+          "latitude": "-16.2573",
+          "longitude": "-49.2643"
+        },
+        "name": "Abadiânia",
+        "latitude": "-16.197",
+        "longitude": "-48.7057",
+        "isCapital": "false",
+        "siafiID": "9201",
+        "ddd": "62",
+        "timezone": "America/Sao_Paulo",
+        "population": 148010
+      }
+    }
+  ],
+  "count": 10,
+  "totalCount": 10,
+  "page": 0
+}

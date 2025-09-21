@@ -32,11 +32,13 @@
     "patient_title": "Patient",
     "city": "City",
     "uf": "UF code",
+    "expertise": "Expertise",
     "address": "Address",
     "specialities": "Especialities",
     "latitude": "Latitude",
     "longitude": "Longitude",
     "hospital_information": "Hospital information",
-    "patient_information": "Patient information"
+    "patient_information": "Patient information",
+    "doctors": "Doctors"
   }
 }
