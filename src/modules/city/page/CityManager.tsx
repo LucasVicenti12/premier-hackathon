@@ -56,7 +56,7 @@ export const CityManager = () => {
 
             <CustomTable
                 page={cities?.page ?? 0}
-                count={cities?.count ?? 0}
+                count={cities?.totalCount ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
                 }}

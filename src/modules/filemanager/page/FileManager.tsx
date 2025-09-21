@@ -70,7 +70,7 @@ export const FileManager = () => {
             </Box>
             <CustomTable
                 page={files?.page ?? 0}
-                count={files?.count ?? 0}
+                count={files?.totalCount ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
                 }}

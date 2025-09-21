@@ -1,4 +1,6 @@
-export interface City {
+import {City} from "../../../utils/entities/entities.ts"
+
+export interface CityTotals extends City {
     code: string
     name: string
     quantityPatient: number
@@ -7,7 +9,7 @@ export interface City {
 }
 
 export interface CityListResponse {
-    items?: City[]
+    items?: CityTotals[]
     count?: number
     page?: number
     totalCount?: number

@@ -60,13 +60,13 @@ export const PatientManager = () => {
 
             <CustomTable
                 page={patients?.page ?? 0}
-                count={patients?.count ?? 0}
+                count={patients?.totalCount ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
                 }}
                 sx={{
                     "& thead th:nth-child(1)": {
-                        width: 100,
+                        width: 300,
                     },
                     "& thead th:nth-child(2)": {
                         width: 250,

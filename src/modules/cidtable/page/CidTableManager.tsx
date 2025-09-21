@@ -53,7 +53,7 @@ export const CidTableManager = () => {
             </Box>
             <CustomTable
                 page={cidTable?.page ?? 0}
-                count={cidTable?.count ?? 0}
+                count={cidTable?.totalCount ?? 0}
                 onChangePagination={(value) => {
                     setPage(value)
                 }}
