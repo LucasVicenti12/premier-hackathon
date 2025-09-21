@@ -79,7 +79,7 @@ export const FileManager = () => {
                         width: 400,
                     },
                     "& thead th:nth-child(5)": {
-                        width: 100,
+                        width: 170,
                     },
                     "& tbody td": {
                         overflowX: "hidden"

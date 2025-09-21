@@ -23,6 +23,7 @@
     "PROCESSING": "Processing",
     "ERROR": "Processing error",
     "FINISHED": "Finished",
+    "NORMALIZING": "Normalizing",
     "code": "Code",
     "codigo_ibge": "Code IBGE",
     "name": "Name",
