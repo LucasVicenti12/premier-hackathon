@@ -38,6 +38,7 @@ export enum FileStatus {
     PROCESSING = "PROCESSING",
     ERROR = "ERROR",
     FINISHED = "FINISHED",
+    NORMALIZING = "NORMALIZING"
 }
 
 export interface FileListResponse {
@@ -66,6 +67,8 @@ export const convertFileStatus = (status: string) => {
             return {color: "#c51e1e", label: FileStatus.ERROR}
         case FileStatus.FINISHED:
             return {color: "#31ca53", label: FileStatus.FINISHED}
+        case FileStatus.NORMALIZING:
+            return {color: "#c613cc", label: FileStatus.NORMALIZING}
         default:
             return null
     }

@@ -13,7 +13,7 @@ class FileManagerRepository {
     async getFileURL(file: FileToUpload): Promise<GetFileURLResponse> {
         try {
             const response = await http.post(
-                "/upload",
+                "https://b7i8sfu5pg.execute-api.sa-east-1.amazonaws.com/upload",
                 {
                     file_name: `${file.type}-${uuid.v4()}.${file.extension}`,
                     file_type: file.contentType
@@ -50,7 +50,9 @@ class FileManagerRepository {
 
     async getPaginatedFiles(page: number): Promise<FileListResponse> {
         try {
-            const response = await http.get(`/files?page=${page}&count=10`)
+            const response = await http.get(
+                `https://b7i8sfu5pg.execute-api.sa-east-1.amazonaws.com/files?page=${page}&count=10`
+            )
 
             return response.data as FileListResponse
         } catch (e) {
@@ -62,7 +64,7 @@ class FileManagerRepository {
     async processFile(fileName: string): Promise<ProcessFileResponse> {
         try {
             const response = await http.put(
-                `/files/${fileName}/start`
+                `https://b7i8sfu5pg.execute-api.sa-east-1.amazonaws.com/files/${fileName}/start`
             )
 
             return response.data as ProcessFileResponse
