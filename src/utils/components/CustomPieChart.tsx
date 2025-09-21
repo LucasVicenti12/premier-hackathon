@@ -18,17 +18,17 @@ export default function CustomPieChart({ data }: CustomPieChartProps) {
   useLayoutEffect(() => {
     if (!chartRef.current) return;
 
-    let root = am5.Root.new(chartRef.current);
+    const root = am5.Root.new(chartRef.current);
 
     root.setThemes([am5themes_Animated.new(root)]);
 
-    let chart = root.container.children.push(
+    const chart = root.container.children.push(
       am5percent.PieChart.new(root, {
         layout: root.verticalLayout,
       })
     );
 
-    let series = chart.series.push(
+    const series = chart.series.push(
       am5percent.PieSeries.new(root, {
         valueField: "value",
         categoryField: "category",

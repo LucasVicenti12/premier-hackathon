@@ -18,18 +18,18 @@ export default function CustomLineChart({ data }: CustomLineChartProps) {
   useLayoutEffect(() => {
     if (!chartRef.current) return;
 
-    let root = am5.Root.new(chartRef.current);
+    const root = am5.Root.new(chartRef.current);
 
     root.setThemes([am5themes_Animated.new(root)]);
 
-    let chart = root.container.children.push(
+    const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panY: false,
         layout: root.verticalLayout,
       })
     );
 
-    let xAxis = chart.xAxes.push(
+    const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
         renderer: am5xy.AxisRendererX.new(root, {}),
         categoryField: "category",
@@ -37,13 +37,13 @@ export default function CustomLineChart({ data }: CustomLineChartProps) {
     );
     xAxis.data.setAll(data);
 
-    let yAxis = chart.yAxes.push(
+    const yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
         renderer: am5xy.AxisRendererY.new(root, {}),
       })
     );
 
-    let series = chart.series.push(
+    const series = chart.series.push(
       am5xy.LineSeries.new(root, {
         name: "Value",
         xAxis: xAxis,
