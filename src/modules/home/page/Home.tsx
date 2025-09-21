@@ -1,29 +1,51 @@
-import { Box, Typography, Grid } from "@mui/joy";
+import { Box, Typography, Grid, CircularProgress } from "@mui/joy";
 import { useTranslation } from "react-i18next";
 import CustomBarCharts from "../../../utils/components/CustomBarChars";
 import CustomPieChart from "../../../utils/components/CustomPieChart";
 import CustomLineChart from "../../../utils/components/CustomLineChart";
+import HospitalMetricState from "../state/HospitalMetricState";
+import { useAtomValue } from "jotai";
+import StateMetricState from "../state/StateMetricState";
 
 export const Home = () => {
     const { t } = useTranslation();
 
-    // const hospitais = dadosJsonHospitals.map(item => ({
-    //     category: item.name,
-    //     value: item.value
-    // }));
+    const hospitalsAtom = useAtomValue(HospitalMetricState.List)
+    const hospitalMetric = hospitalsAtom.state === 'hasData' ? hospitalsAtom.data : null
 
-    // const states = dadosJsonStates.map(item => ({
-    //     category: item.name,
-    //     value: item.value
-    // }));
+    const StateAtom = useAtomValue(StateMetricState.List)
+    const statesMetric = StateAtom.state === 'hasData' ? StateAtom.data : null
 
-    const hospitais = [
-        { category: "Hospital Santa Cruz", pacientes: 1245, medicos: 215 },
-        { category: "Hospital Santo João", pacientes: 982, medicos: 150 },
-        { category: "Hospital Central", pacientes: 865, medicos: 120 },
-        { category: "Hospital Vida Nova", pacientes: 765, medicos: 100 },
-        { category: "Hospital Esperança", pacientes: 654, medicos: 80 },
-    ];
+    if (hospitalsAtom.state === 'loading') {
+        return (
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                    height: "100%",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}
+            >
+                <CircularProgress />
+            </Box>
+        )
+    }
+
+    const hospitals = hospitalMetric ? hospitalMetric.items?.map(item => ({
+        category: item.name,
+        pacientes: item.quantitydoctors,
+        medicos: item.quantitypatient
+    })) ?? [] : []
+
+    const states = statesMetric ? statesMetric.items?.map(item => ({
+        category: item.name,
+        pacientes: item.quantitydoctors,
+        medicos: item.quantitypatient,
+        hospitals: item.quantityhospital
+    })) ?? [] : []
+
 
     const formatGraphData = (data: any[], key: string) => {
         return data.map((item) => ({
@@ -32,10 +54,44 @@ export const Home = () => {
         }));
     };
 
-    const hospitalMaisPacientes = hospitais.reduce((a, b) => (a.pacientes > b.pacientes ? a : b));
-    const hospitalMenosPacientes = hospitais.reduce((a, b) => (a.pacientes < b.pacientes ? a : b));
-    const hospitalMaisMedicos = hospitais.reduce((a, b) => (a.medicos > b.medicos ? a : b));
-    const hospitalMenosMedicos = hospitais.reduce((a, b) => (a.medicos < b.medicos ? a : b));
+    const findMax = <T extends Record<string, any>>(
+        array: T[],
+        property: keyof T,
+        nameProperty: keyof T = 'nome' as keyof T
+    ): string => {
+        if (array.length === 0) return 'Nenhum dado disponível';
+
+        const maxItem = array.reduce((max, current) =>
+            current[property] > max[property] ? current : max, array[0]);
+
+        return `${maxItem[nameProperty]} (${maxItem[property]})`;
+    };
+
+    const findMin = <T extends Record<string, any>>(
+        array: T[],
+        property: keyof T,
+        nameProperty: keyof T = 'nome' as keyof T
+    ): string => {
+        if (array.length === 0) return 'Nenhum dado disponível';
+
+        const minItem = array.reduce((min, current) =>
+            current[property] < min[property] ? current : min, array[0]);
+
+        return `${minItem[nameProperty]} (${minItem[property]})`;
+    };
+
+    // Hospital com mais e menos pacientes
+    const hospitalWithMostPatients = findMax(hospitals, 'pacientes');
+    const hospitalWithLeastPatients = findMin(hospitals, 'pacientes');
+
+    // Hospital com mais e menos médicos
+    const hospitalWithMostDoctors = findMax(hospitals, 'medicos');
+    const hospitalWithLeastDoctors = findMin(hospitals, 'medicos');
+
+    // Estado com mais pacientes, médicos e hospitais
+    const stateWithMostPatients = findMax(states, 'pacientes');
+    const stateWithMostDoctors = findMax(states, 'medicos');
+    const stateWithMostHospitals = findMax(states, 'hospitals');
 
     return (
         <Box sx={{ p: 2, display: "flex", flexDirection: "column", gap: 3 }}>
@@ -45,39 +101,46 @@ export const Home = () => {
 
 
             <Grid container spacing={2}>
-                <Grid xs={12} md={3}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
-                        <Typography level="body-sm">{t("hospital_more_patient")}</Typography>
-                        <Typography level="title-lg" fontWeight="bold">
-                            {hospitalMaisPacientes.category} ({hospitalMaisPacientes.pacientes})
-                        </Typography>
-                    </Box>
-                </Grid>
-                <Grid xs={12} md={3}>
-
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
-                        <Typography level="body-sm">{t("hospital_less_patient")}</Typography>
-                        <Typography level="title-lg" fontWeight="bold">
-                            {hospitalMenosPacientes.category} ({hospitalMenosPacientes.pacientes})
-                        </Typography>
-                    </Box>
-                </Grid>
-                <Grid xs={12} md={3}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
-                        <Typography level="body-sm">{t("hospital_more_doctor")}</Typography>
-                        <Typography level="title-lg" fontWeight="bold">
-                            {hospitalMaisMedicos.category} ({hospitalMaisMedicos.medicos})
-                        </Typography>
-                    </Box>
-                </Grid>
-                <Grid xs={12} md={3}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
-                        <Typography level="body-sm">{t("hospital_less_doctor")}</Typography>
-                        <Typography level="title-lg" fontWeight="bold">
-                            {hospitalMenosMedicos.category} ({hospitalMenosMedicos.medicos})
-                        </Typography>
-                    </Box>
-                </Grid>
+                {hospitalWithMostPatients != "undefined (undefined)" ? (
+                    <Grid xs={12} md={3}>
+                        <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
+                            <Typography level="body-sm">{t("hospital_more_patient")}</Typography>
+                            <Typography level="title-lg" fontWeight="bold">
+                                {hospitalWithMostPatients}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ) : null}
+                {hospitalWithLeastPatients != "undefined (undefined)" ? (
+                    <Grid xs={12} md={3}>
+                        <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
+                            <Typography level="body-sm">{t("hospital_less_patient")}</Typography>
+                            <Typography level="title-lg" fontWeight="bold">
+                                {hospitalWithLeastPatients}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ) : null}
+                {hospitalWithMostDoctors != "undefined (undefined)" ? (
+                    <Grid xs={12} md={3}>
+                        <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
+                            <Typography level="body-sm">{t("hospital_more_doctor")}</Typography>
+                            <Typography level="title-lg" fontWeight="bold">
+                                {hospitalWithMostDoctors}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ) : null}
+                {hospitalWithLeastDoctors != "undefined (undefined)" ? (
+                    <Grid xs={12} md={3}>
+                        <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
+                            <Typography level="body-sm">{t("hospital_less_doctor")}</Typography>
+                            <Typography level="title-lg" fontWeight="bold">
+                                {hospitalWithLeastDoctors}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ) : null}
             </Grid>
 
             <Grid container spacing={2}>
@@ -86,7 +149,7 @@ export const Home = () => {
                         <Typography level="title-md" mb={2}>
                             {t("graphics_title_pacient_hospital")}
                         </Typography>
-                        <CustomBarCharts data={formatGraphData(hospitais, "pacientes")} />
+                        <CustomBarCharts data={formatGraphData(hospitals, "pacientes")} />
                     </Box>
                 </Grid>
                 <Grid xs={12} md={6}>
@@ -94,7 +157,7 @@ export const Home = () => {
                         <Typography level="title-md" mb={2}>
                             {t("graphics_title_doctor_hospital")}
                         </Typography>
-                        <CustomBarCharts data={formatGraphData(hospitais, "medicos")} />
+                        <CustomBarCharts data={formatGraphData(hospitals, "medicos")} />
                     </Box>
                 </Grid>
             </Grid>
@@ -102,32 +165,38 @@ export const Home = () => {
             {/* SEGUNDA PARTE DOS GRAFICOS ---------------------------------------------------------------- */}
 
             <Grid container spacing={2} mt={3}>
-                <Grid xs={12} md={4}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
-                        <Typography level="body-sm">{t("state_more_patient")}</Typography>
-                        <Typography level="title-lg" fontWeight="bold">
-                            São Paulo (3200)
-                        </Typography>
-                    </Box>
-                </Grid>
+                {stateWithMostPatients != "undefined (undefined)" ? (
+                    <Grid xs={12} md={4}>
+                        <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
+                            <Typography level="body-sm">{t("state_more_patient")}</Typography>
+                            <Typography level="title-lg" fontWeight="bold">
+                                {stateWithMostPatients}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ) : null}
 
-                <Grid xs={12} md={4}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
-                        <Typography level="body-sm">{t("state_more_doctor")}</Typography>
-                        <Typography level="title-lg" fontWeight="bold">
-                            São Paulo (550)
-                        </Typography>
-                    </Box>
-                </Grid>
+                {stateWithMostDoctors != "undefined (undefined)" ? (
+                    <Grid xs={12} md={4}>
+                        <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
+                            <Typography level="body-sm">{t("state_more_doctor")}</Typography>
+                            <Typography level="title-lg" fontWeight="bold">
+                                {stateWithMostDoctors}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ) : null}
 
-                <Grid xs={12} md={4}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
-                        <Typography level="body-sm">{t("state_more_hospital")}</Typography>
-                        <Typography level="title-lg" fontWeight="bold">
-                            São Paulo (58)
-                        </Typography>
-                    </Box>
-                </Grid>
+                {stateWithMostHospitals != "undefined (undefined)" ? (
+                    <Grid xs={12} md={4}>
+                        <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
+                            <Typography level="body-sm">{t("state_more_hospital")}</Typography>
+                            <Typography level="title-lg" fontWeight="bold">
+                                {stateWithMostHospitals}
+                            </Typography>
+                        </Box>
+                    </Grid>
+                ) : null}
             </Grid>
 
             <Grid container spacing={2} mt={2}>
@@ -136,13 +205,7 @@ export const Home = () => {
                         <Typography level="title-md" mb={2}>
                             {t("graphics_title_pacient_state")}
                         </Typography>
-                        <CustomPieChart data={[
-                            { category: "São Paulo", value: 3200 },
-                            { category: "Minas Gerais", value: 1800 },
-                            { category: "Rio de Janeiro", value: 1500 },
-                            { category: "Paraná", value: 1200 },
-                            { category: "Bahia", value: 900 },
-                        ]} />
+                        <CustomPieChart data={formatGraphData(states, "medicos")} />
                     </Box>
                 </Grid>
 
@@ -151,13 +214,7 @@ export const Home = () => {
                         <Typography level="title-md" mb={2}>
                             {t("graphics_title_doctor_state")}
                         </Typography>
-                        <CustomLineChart data={[
-                            { category: "São Paulo", value: 550 },
-                            { category: "Minas Gerais", value: 300 },
-                            { category: "Rio de Janeiro", value: 250 },
-                            { category: "Paraná", value: 200 },
-                            { category: "Bahia", value: 150 },
-                        ]} />
+                        <CustomLineChart data={formatGraphData(states, "medicos")} />
                     </Box>
                 </Grid>
             </Grid>
@@ -166,13 +223,8 @@ export const Home = () => {
                 <Typography level="title-md" mb={2}>
                     {t("graphics_title_hospital_state")}
                 </Typography>
-                <CustomBarCharts data={[
-                    { category: "São Paulo", value: 58 },
-                    { category: "Minas Gerais", value: 32 },
-                    { category: "Rio de Janeiro", value: 28 },
-                    { category: "Paraná", value: 20 },
-                    { category: "Bahia", value: 15 },
-                ]} />
+
+                <CustomBarCharts data={formatGraphData(states, "hospital")} />
             </Box>
         </Box>
     );
