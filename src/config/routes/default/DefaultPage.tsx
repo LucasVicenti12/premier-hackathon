@@ -2,6 +2,8 @@ import {Outlet} from "react-router-dom";
 import Layout from "../layout/Layout.tsx";
 
 export const DefaultPage = () => {
+    console.log("running 1.4")
+
     return (
         <Layout.Root>
             <Layout.Header/>

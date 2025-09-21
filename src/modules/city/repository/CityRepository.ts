@@ -4,7 +4,7 @@ import {http} from "../../../config/api/Http.ts";
 class CityRepository {
     async getPaginatedCities(page: number): Promise<CityListResponse> {
         try {
-            const response = await http.get(`/cities?page=${page}`)
+            const response = await http.get(`/cities?page=${page}&count=10`)
 
             return response.data as CityListResponse
         } catch (e) {

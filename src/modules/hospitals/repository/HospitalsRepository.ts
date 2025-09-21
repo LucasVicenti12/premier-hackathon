@@ -4,7 +4,7 @@ import {http} from "../../../config/api/Http.ts";
 class HospitalsRepository {
     async getHospitals(page: number): Promise<HospitalListResponse> {
         try {
-            const response = await http.get(`/hospitals?page=${page}`)
+            const response = await http.get(`/hospitals?page=${page}&count=10`)
 
             return response.data as HospitalListResponse
         } catch (e) {

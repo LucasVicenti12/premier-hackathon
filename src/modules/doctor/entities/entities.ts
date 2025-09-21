@@ -2,7 +2,7 @@ import { City } from "../../../utils/entities/entities"
 
 export interface Doctor {
     code: string,
-    full_name: string,
+    fullName: string,
     expertise: string,
     city: City,
 }

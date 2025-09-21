@@ -19,10 +19,12 @@
     "processed_at": "Processed",
     "started_processing_at": "Stated processing",
     "process_button": "Process file",
+    "retry_file": "Retry",
     "PENDING": "Pending",
     "PROCESSING": "Processing",
     "ERROR": "Processing error",
     "FINISHED": "Finished",
+    "NORMALIZING": "Normalizing",
     "code": "Code",
     "codigo_ibge": "Code IBGE",
     "name": "Name",
@@ -67,6 +69,7 @@
     "graphics_title_doctor_hospital": "Doctors for hospitals",
     "graphics_title_pacient_state": "Patients for states",
     "graphics_title_doctor_state": "Doctors for states",
-    "graphics_title_hospital_state": "Hospitals for states"
+    "graphics_title_hospital_state": "Hospitals for states",
+    "population": "Population"
   }
 }

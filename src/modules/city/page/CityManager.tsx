@@ -73,20 +73,22 @@ export const CityManager = () => {
                 <tr>
                     <th>{t("code")}</th>
                     <th>{t("name")}</th>
-                    <th>{t("quantity_patient")}</th>
-                    <th>{t("quantity_doctors")}</th>
-                    <th>{t("quantity_hospitals")}</th>
+                    <th>{t("STATE")}</th>
+                    <th>{t("latitude")}</th>
+                    <th>{t("longitude")}</th>
+                    <th>{t("population")}</th>
                 </tr>
                 </thead>
                 <tbody>
                 {
                     cities && cities.items?.map((l, i) => (
                             <tr key={`patient_list_${i}`}>
-                                <td>{l.code}</td>
+                                <td>{l.codeIBGE}</td>
                                 <td>{l.name}</td>
-                                <td>{l.quantityPatient}</td>
-                                <td>{l.quantityDoctors}</td>
-                                <td>{l.quantityHospitals}</td>
+                                <td>{l.state.name}</td>
+                                <td>{l.latitude}</td>
+                                <td>{l.longitude}</td>
+                                <td>{l.population}</td>
                             </tr>
                         )
                     )

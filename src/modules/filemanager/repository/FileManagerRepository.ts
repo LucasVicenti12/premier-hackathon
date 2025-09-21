@@ -50,7 +50,9 @@ class FileManagerRepository {
 
     async getPaginatedFiles(page: number): Promise<FileListResponse> {
         try {
-            const response = await http.get(`/files?page=${page}&count=10`)
+            const response = await http.get(
+                `/files?page=${page}&count=10`
+            )
 
             return response.data as FileListResponse
         } catch (e) {

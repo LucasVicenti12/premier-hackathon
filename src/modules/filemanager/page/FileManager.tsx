@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import {convertFileStatus, FileStatus} from "../entities/entities.ts";
 import {CustomStatusTile} from "../../../utils/components/CustomStatusTile.tsx";
 import PublishedWithChangesRoundedIcon from '@mui/icons-material/PublishedWithChangesRounded';
+import ReplayRoundedIcon from '@mui/icons-material/ReplayRounded';
 import {fileManagerUseCase} from "../usecase/FileManagerUseCase.ts";
 
 export const FileManager = () => {
@@ -79,7 +80,7 @@ export const FileManager = () => {
                         width: 400,
                     },
                     "& thead th:nth-child(5)": {
-                        width: 100,
+                        width: 170,
                     },
                     "& tbody td": {
                         overflowX: "hidden"
@@ -130,6 +131,22 @@ export const FileManager = () => {
                                                 }}
                                             >
                                                 {t("process_button")}
+                                            </Button>
+                                        )
+                                    }
+                                    {
+                                        l.status.toUpperCase() === FileStatus.ERROR && (
+                                            <Button
+                                                size={"sm"}
+                                                color={"danger"}
+                                                startDecorator={
+                                                    <ReplayRoundedIcon/>
+                                                }
+                                                onClick={() => {
+                                                    processFile(l.fileName)
+                                                }}
+                                            >
+                                                {t("retry_file")}
                                             </Button>
                                         )
                                     }

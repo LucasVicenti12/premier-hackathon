@@ -1,16 +1,16 @@
-import mock from "./mock.json";
 import {CidTableListResponse} from "../entities/entities.ts";
+import {http} from "../../../config/api/Http.ts";
 
 class CidTableRepository{
     async getCidTableList(page: number): Promise<CidTableListResponse> {
-        console.log(page)
-        const t = mock as unknown
+        try {
+            const response = await http.get(`/cidTable?page=${page}&count=10`)
 
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(t as CidTableListResponse)
-            }, 1000)
-        })
+            return response.data as CidTableListResponse
+        } catch (e) {
+            console.error(e)
+            return {error: "UNEXPECTED_ERROR"}
+        }
     }
 }
 

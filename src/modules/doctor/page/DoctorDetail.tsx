@@ -65,7 +65,7 @@ export const DoctorDetail = () => {
                     #{doctor?.code}
                 </Typography>
                 <Typography level={"body-lg"} fontWeight={"bold"}>
-                    {doctor?.full_name}
+                    {doctor?.fullName}
                 </Typography>
             </Box>
             <Box
@@ -117,7 +117,7 @@ export const DoctorDetail = () => {
                         {t("name")}
                     </Typography>
                     <Typography level={"body-md"} fontWeight={"bold"}>
-                        {doctor?.full_name}
+                        {doctor?.fullName}
                     </Typography>
                 </Box>
                 <Box

@@ -8,7 +8,7 @@ import {http} from "../../../config/api/Http.ts";
 class PatientRepository{
     async getPaginatedPatient(page: number): Promise<PatientListResponse> {
         try {
-            const response = await http.get(`/patients?page=${page}`)
+            const response = await http.get(`/patients?page=${page}&count=10`)
 
             return response.data as PatientListResponse
         } catch (e) {

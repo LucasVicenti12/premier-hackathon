@@ -4,7 +4,7 @@ import {http} from "../../../config/api/Http.ts";
 class StateRepository {
     async getPaginatedState(page: number): Promise<StateListResponse> {
         try {
-            const response = await http.get(`/states?page=${page}`)
+            const response = await http.get(`/states?page=${page}&count=10`)
 
             return response.data as StateListResponse
         } catch (e) {
