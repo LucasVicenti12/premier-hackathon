@@ -1,27 +1,27 @@
-import mock from "./mock.json"
-import {Hospital, HospitalListResponse, HospitalResponse} from "../entities/entities.ts";
+import {HospitalListResponse, HospitalResponse} from "../entities/entities.ts";
+import {http} from "../../../config/api/Http.ts";
 
 class HospitalsRepository {
     async getHospitals(page: number): Promise<HospitalListResponse> {
-        console.log(page)
-        const t = mock as unknown
+        try {
+            const response = await http.get(`/hospitals?page=${page}`)
 
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve(t as HospitalListResponse)
-            }, 1000)
-        })
+            return response.data as HospitalListResponse
+        } catch (e) {
+            console.error(e)
+            return {error: "UNEXPECTED_ERROR"}
+        }
     }
 
     async getHospitalByCode(code: string): Promise<HospitalResponse> {
-        const h = mock.items.find(x => x.code === code)
-        const t = (h as unknown) as Hospital
+        try {
+            const response = await http.get(`/hospitals/${code}`)
 
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve({hospital: t})
-            }, 1000)
-        })
+            return response.data as HospitalResponse
+        } catch (e) {
+            console.error(e)
+            return {error: "UNEXPECTED_ERROR"}
+        }
     }
 }
 

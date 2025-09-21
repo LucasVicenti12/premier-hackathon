@@ -28,6 +28,7 @@ import LocationCityRoundedIcon from '@mui/icons-material/LocationCityRounded';
 import {useLocation, useNavigate} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import {ToggleLanguageButton} from "../../i18n/components/ToogleLanguageButton.tsx";
+import {useWidth} from "../../../utils/functions/useWidth.ts";
 
 const Root = (props: BoxProps) => (
     <Box
@@ -36,8 +37,8 @@ const Root = (props: BoxProps) => (
             {
                 display: 'grid',
                 gridTemplateColumns: {
-                    xs: '1fr',
                     sm: 'minmax(auto, auto) minmax(450px, 1fr)',
+                    xs: 'minmax(auto, auto) minmax(450px, 1fr)',
                     md: 'minmax(auto, auto) minmax(300px, 1fr)',
                 },
                 gridTemplateRows: '50px 1fr',
@@ -84,23 +85,28 @@ const Header = (props: BoxProps) => (
             }}
         >
             <Stack direction={"row"} alignItems={"center"} gap={1}>
-                <LocalHospitalRoundedIcon sx={{color: "#ffffff"}}/>
-                <Typography level={"title-md"} sx={{color: "#ffffff"}}>
+                <LocalHospitalRoundedIcon sx={{ color: "#ffffff" }} />
+                <Typography level={"title-md"} sx={{ color: "#ffffff" }}>
                     Hackaton - Premiersoft
                 </Typography>
             </Stack>
             <Stack direction={"row"} alignItems={"center"} gap={1}>
-                <ToggleLanguageButton/>
+                <ToggleLanguageButton />
             </Stack>
         </Box>
     </Box>
 )
 
 const SideNav = (props: BoxProps) => {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
 
     const navigate = useNavigate()
-    const [open, setOpen] = useState(false)
+
+    const width = useWidth()
+
+    const breakpoints = ["xs", "sm", "md"]
+
+    const [open, setOpen] = useState(!breakpoints.includes(width))
 
     const path = useLocation().pathname
 
@@ -164,10 +170,10 @@ const SideNav = (props: BoxProps) => {
                     borderRight: '1px solid',
                     borderColor: 'divider',
                     display: {
-                        xs: 'none',
+                        xs: 'initial',
                         sm: 'initial',
                     },
-                    width: open ? "220px" : "50px",
+                    width: open ? "230px" : "60px",
                     position: "relative",
                     ":hover": {
                         ["& #menu-side-open-icon"]: {
@@ -207,9 +213,9 @@ const SideNav = (props: BoxProps) => {
                 >
                     {
                         open ? (
-                            <KeyboardArrowLeftRoundedIcon sx={{fontSize: "13pt"}}/>
+                            <KeyboardArrowLeftRoundedIcon sx={{ fontSize: "13pt" }} />
                         ) : (
-                            <KeyboardArrowRightRoundedIcon sx={{fontSize: "13pt"}}/>
+                            <KeyboardArrowRightRoundedIcon sx={{ fontSize: "13pt" }} />
                         )
                     }
                 </IconButton>
@@ -227,7 +233,7 @@ const SideNav = (props: BoxProps) => {
                 }}
             >
                 <List
-                    size="sm"
+                    size="md"
                     sx={{
                         gap: 0,
                         '--List-nestedInsetStart': '30px',

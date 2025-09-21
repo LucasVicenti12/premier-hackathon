@@ -32,4 +32,4 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy to S3
-        run: aws s3 sync build/ s3://hackaton-premiersoft --delete
+        run: aws s3 sync dist/ s3://hackaton-premiersoft-frontend --delete
