@@ -8,37 +8,38 @@ import {PatientManagerDetail} from "../../modules/patient/page/PatientManagerDet
 import {DoctorManager} from "../../modules/doctor/page/DoctorManager.tsx";
 import {Home} from "../../modules/home/page/Home.tsx";
 import {CidTableManager} from "../../modules/cidtable/page/CidTableManager.tsx";
+import {DoctorDetail} from "../../modules/doctor/page/DoctorDetail.tsx";
 
 export const Root = () => (
     <BrowserRouter basename={"/app"}>
         <Routes>
             <Route
                 path={""}
-                element={<DefaultPage/>}
+                element={<DefaultPage />}
             >
                 <Route
                     path={"/home"}
-                    element={<Home/>}
+                    element={<Home />}
                 />
 
                 <Route
                     path={"/fileManager"}
-                    element={<FileManager/>}
+                    element={<FileManager />}
                 />
 
                 <Route
                     path={"/hospital"}
-                    element={<Hospitals/>}
+                    element={<Hospitals />}
                 />
 
                 <Route
                     path={"/hospital/:hospitalCode"}
-                    element={<HospitalDetail/>}
+                    element={<HospitalDetail />}
                 />
 
                 <Route
                     path={"/patientManager/:patientCode"}
-                    element={<PatientManagerDetail/>}
+                    element={<PatientManagerDetail />}
                 />
 
                 <Route
@@ -53,7 +54,12 @@ export const Root = () => (
 
                 <Route
                     path={"/doctorManager"}
-                    element={<DoctorManager/>}
+                    element={<DoctorManager />}
+                />
+
+                <Route
+                    path={"/doctorManager/:doctorCode"}
+                    element={<DoctorDetail />}
                 />
 
             </Route>
