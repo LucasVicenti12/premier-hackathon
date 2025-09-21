@@ -104,7 +104,7 @@ export const FileManager = () => {
                         return (
                             <tr key={`file_list_${i}`}>
                                 <td>{l.fileName}</td>
-                                <td>{dayjs(l.createdAt.substring(0, 23)).format("DD/MM/YYYY HH:mm")}</td>
+                                <td>{l.createdAt ? dayjs(l.createdAt.substring(0, 23)).format("DD/MM/YYYY HH:mm") : "-"}</td>
                                 <td>{l.startedProcessingAt ? dayjs(l.startedProcessingAt.substring(0, 23)).format("DD/MM/YYYY HH:mm") : "-"}</td>
                                 <td>{l.processedAt ? dayjs(l.processedAt.substring(0, 23)).format("DD/MM/YYYY HH:mm") : "-"}</td>
                                 <td>

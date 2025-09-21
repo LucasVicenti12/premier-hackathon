@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "code": "SP",
+      "name": "São Paulo",
+      "quantityPatient": 15000,
+      "quantityDoctors": 4200,
+      "quantityHospitals": 350
+    },
+    {
+      "code": "RJ",
+      "name": "Rio de Janeiro",
+      "quantityPatient": 8700,
+      "quantityDoctors": 2500,
+      "quantityHospitals": 180
+    },
+    {
+      "code": "MG",
+      "name": "Minas Gerais",
+      "quantityPatient": 9200,
+      "quantityDoctors": 2700,
+      "quantityHospitals": 210
+    },
+    {
+      "code": "RS",
+      "name": "Rio Grande do Sul",
+      "quantityPatient": 6100,
+      "quantityDoctors": 1800,
+      "quantityHospitals": 140
+    },
+    {
+      "code": "BA",
+      "name": "Bahia",
+      "quantityPatient": 7400,
+      "quantityDoctors": 2000,
+      "quantityHospitals": 160
+    }
+  ],
+  "count": 5,
+  "page": 1,
+  "totalCount": 5,
+  "error": null
+}

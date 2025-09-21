@@ -43,8 +43,13 @@
     "doctors": "Médicos",
     "doctor_information": "Informações do médico",
     "description": "Descrição",
-    "map_title_hospital": "Mapa de hospitais",
-    "map_title_state": "Mapa de estados",
-    "map_title": "Mapas"
+    "states": "Estados",
+    "cities": "Cidades",
+    "quantity_patient": "Quantidade de pacientes",
+    "quantity_doctors": "Quantidade de medicos",
+    "quantity_hospitals": "Quantidade de hospitais",
+    "map_title_hospital": "Map of hospitals",
+    "map_title_state": "Map of states",
+    "map_title": "Maps"
   }
 }
