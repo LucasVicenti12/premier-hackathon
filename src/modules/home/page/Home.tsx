@@ -31,14 +31,45 @@ export const Home = () => {
                     {t("home_title")}
                 </Typography>
             </Box>
-            <Box 
+            <Box
                 sx={{
                     display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    width: 200,
-                }}>
+                    flexDirection: "raw",
+                    gap: 1,
+                    boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                    borderRadius: "8px",
+                    p: 1,
+                    flex: 1
+                }}
+            >
+                {t("Mais pacientes")}
+                {t("Hospital Santa Cruz")}
+            </Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 1,
+                    boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                    borderRadius: "8px",
+                    p: 1,
+                    flex: 1
+                }}
+            >
+                {t("Menos pacientes")}
+                {t("Hospital Santo João")}
+            </Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 1,
+                    boxShadow: "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                    borderRadius: "8px",
+                    p: 1,
+                    flex: 1
+                }}
+            >
                 <CustomAmcharts data={dados}/>
             </Box>
         </Box>
