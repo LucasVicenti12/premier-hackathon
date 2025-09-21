@@ -28,6 +28,7 @@
     "gender": "Género",
     "neighborhood": "Bairro",
     "bed_capacity": "Capacidade de leitos",
-    "patient_title": "Pacientes"
+    "patient_title": "Pacientes",
+    "home_title": "Página inicial"
   }
 }
