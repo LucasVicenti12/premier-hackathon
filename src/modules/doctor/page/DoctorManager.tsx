@@ -88,7 +88,7 @@ export const DoctorManager = () => {
                         doctors && doctors.items?.map((d, i) => (
                             <tr key={`hospital_list_${i}`}>
                                 <td>{d.code}</td>
-                                <td>{d.full_name}</td>
+                                <td>{d.fullName}</td>
                                 <td>{d.expertise}</td>
                                 <td>{d.city.name}</td>
                                 <td>

@@ -40,8 +40,11 @@ export const CustomTable = (props: CustomTableProps) => {
                                     color: "#ffffff"
                                 },
                                 "& tbody td": {
-                                    borderRadius: "none"
-                                }
+                                    borderRadius: "none",
+                                    textWrap: "nowrap",
+                                    textOverflow: "ellipsis",
+                                    overflow: "hidden"
+                                },
                             }
                         }
                     }

@@ -67,6 +67,7 @@
     "graphics_title_doctor_hospital": "Medicos por hospitais",
     "graphics_title_pacient_state": "Pacientes por estados",
     "graphics_title_doctor_state": "Medicos por estados",
-    "graphics_title_hospital_state": "Hospitais por estados"
+    "graphics_title_hospital_state": "Hospitais por estados",
+    "population": "População"
   }
 }

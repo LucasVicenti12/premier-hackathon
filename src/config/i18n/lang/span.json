@@ -68,9 +68,6 @@
     "graphics_title_pacient_state": "Pacientes por estado",
     "graphics_title_doctor_state": "Médicos por estado",
     "graphics_title_hospital_state": "Hospitales por estado",
-    "portuguese": "Portugués",
-    "english": "Inglés",
-    "spanish": "Español",
-    "map": "Mapas"
+    "population": "Población"
   }
 }
