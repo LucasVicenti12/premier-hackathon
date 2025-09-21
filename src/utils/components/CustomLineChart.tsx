@@ -43,6 +43,14 @@ export default function CustomLineChart({ data }: CustomLineChartProps) {
       })
     );
 
+    xAxis.get("renderer").labels.template.setAll({
+      rotation: -90, // Rotaciona 45 graus para a esquerda
+      dy: 10, // Ajusta a posição vertical dos labels
+      dx: -10, // Ajusta a posição horizontal dos labels
+      centerY: am5.p50,
+      centerX: am5.p50,
+    });
+
     const series = chart.series.push(
       am5xy.LineSeries.new(root, {
         name: "Value",
