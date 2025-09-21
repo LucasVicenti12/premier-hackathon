@@ -69,7 +69,7 @@ export const Maps = () => {
             </Typography>
             <Grid container spacing={2}>
                 <Grid xs={12} md={6}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: 3, bgcolor: "background.body" }}>
+                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
                         <Typography level="title-md" mb={2}>
                             {t("map_title_state")}
                         </Typography>
@@ -81,7 +81,7 @@ export const Maps = () => {
                     </Box>
                 </Grid>
                 <Grid xs={12} md={6}>
-                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: 3, bgcolor: "background.body" }}>
+                    <Box sx={{ p: 2, borderRadius: "md", boxShadow: "rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px", bgcolor: "background.body", }}>
                         <Typography level="title-md" mb={2}>
                             {t("map_title_hospital")}
                         </Typography>
