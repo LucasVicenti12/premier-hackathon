@@ -1,36 +1,56 @@
-import { Box, Typography, Grid, CircularProgress } from "@mui/joy";
+import { Box, Typography, Grid } from "@mui/joy";
 import { useTranslation } from "react-i18next";
 import CustomBarCharts from "../../../utils/components/CustomBarChars";
 import CustomPieChart from "../../../utils/components/CustomPieChart";
 import CustomLineChart from "../../../utils/components/CustomLineChart";
-import HospitalMetricState from "../state/HospitalMetricState";
-import { useAtomValue } from "jotai";
-import StateMetricState from "../state/StateMetricState";
+// import HospitalMetricState from "../state/HospitalMetricState";
+// import { useAtomValue } from "jotai";
+// import StateMetricState from "../state/StateMetricState";
 
 export const Home = () => {
     const { t } = useTranslation();
 
-    const hospitalsAtom = useAtomValue(HospitalMetricState.List)
-    const hospitalMetric = hospitalsAtom.state === 'hasData' ? hospitalsAtom.data : null
 
-    const StateAtom = useAtomValue(StateMetricState.List)
-    const statesMetric = StateAtom.state === 'hasData' ? StateAtom.data : null
+    // const hospitalsAtom = useAtomValue(HospitalMetricState.List)
+    // const hospitalMetric = hospitalsAtom.state === 'hasData' ? hospitalsAtom.data : null
 
-    if (hospitalsAtom.state === 'loading') {
-        return (
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "100%",
-                    height: "100%",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}
-            >
-                <CircularProgress />
-            </Box>
-        )
+    // const StateAtom = useAtomValue(StateMetricState.List)
+    // const statesMetric = StateAtom.state === 'hasData' ? StateAtom.data : null
+
+    // if (hospitalsAtom.state === 'loading') {
+    //     return (
+    //         <Box
+    //             sx={{
+    //                 display: "flex",
+    //                 flexDirection: "column",
+    //                 width: "100%",
+    //                 height: "100%",
+    //                 alignItems: "center",
+    //                 justifyContent: "center"
+    //             }}
+    //         >
+    //             <CircularProgress />
+    //         </Box>
+    //     )
+    // }
+
+    const hospitalMetric = {
+        items: [
+            { name: "Hospital Central", quantitydoctors: 120, quantitypatient: 850 },
+            { name: "Hospital Regional", quantitydoctors: 80, quantitypatient: 600 },
+            { name: "Hospital Municipal", quantitydoctors: 40, quantitypatient: 300 },
+            { name: "Hospital Infantil", quantitydoctors: 65, quantitypatient: 420 },
+        ]
+    }
+
+    // mock para estados
+    const statesMetric = {
+        items: [
+            { name: "São Paulo", quantitydoctors: 1500, quantitypatient: 11000, quantityhospital: 35 },
+            { name: "Rio de Janeiro", quantitydoctors: 900, quantitypatient: 7200, quantityhospital: 22 },
+            { name: "Minas Gerais", quantitydoctors: 700, quantitypatient: 5000, quantityhospital: 18 },
+            { name: "Santa Catarina", quantitydoctors: 400, quantitypatient: 2800, quantityhospital: 10 },
+        ]
     }
 
     const hospitals = hospitalMetric ? hospitalMetric.items?.map(item => ({
@@ -57,7 +77,7 @@ export const Home = () => {
     const findMax = <T extends Record<string, any>>(
         array: T[],
         property: keyof T,
-        nameProperty: keyof T = 'nome' as keyof T
+        nameProperty: keyof T = 'category' as keyof T // <-- aqui
     ): string => {
         if (array.length === 0) return 'Nenhum dado disponível';
 
@@ -70,7 +90,7 @@ export const Home = () => {
     const findMin = <T extends Record<string, any>>(
         array: T[],
         property: keyof T,
-        nameProperty: keyof T = 'nome' as keyof T
+        nameProperty: keyof T = 'category' as keyof T // <-- aqui
     ): string => {
         if (array.length === 0) return 'Nenhum dado disponível';
 
@@ -79,6 +99,7 @@ export const Home = () => {
 
         return `${minItem[nameProperty]} (${minItem[property]})`;
     };
+
 
     // Hospital com mais e menos pacientes
     const hospitalWithMostPatients = findMax(hospitals, 'pacientes');

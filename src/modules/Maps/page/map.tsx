@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import ChoroplethMap from "../../../utils/components/CustomChoroplethMap";
 import estadosBrazilGeoJSON from "../../../utils/geojson/brazil_states.geojson?raw";
 import AccessibleHospitalMap from "../../../utils/components/CustomAccessibleMap";
+// import { useAtomValue } from "jotai";
+// import HospitalMetricState from "../../home/state/HospitalMetricState";
+// import StateMetricState from "../../home/state/StateMetricState";
 
 interface HospitalData {
     nome: string;
@@ -17,14 +20,42 @@ export const Maps = () => {
 
     const geoJsonData = JSON.parse(estadosBrazilGeoJSON);
 
-    // const dadosPorEstado = dadosJsonEstado.reduce((acumulador, item) => {
-    //     acumulador[item.name] = {
-    //         patients: item.patients,
-    //         doctor: item.doctors,
-    //         hospitals: item.hospitals
-    //     };
-    //     return acumulador;
-    // }, {});
+    // const hospitalsAtom = useAtomValue(HospitalMetricState.List)
+        // const hospitalMetric = hospitalsAtom.state === 'hasData' ? hospitalsAtom.data : null
+    
+        // const StateAtom = useAtomValue(StateMetricState.List)
+        // const statesMetric = StateAtom.state === 'hasData' ? StateAtom.data : null
+    
+        // if (hospitalsAtom.state === 'loading') {
+        //     return (
+        //         <Box
+        //             sx={{
+        //                 display: "flex",
+        //                 flexDirection: "column",
+        //                 width: "100%",
+        //                 height: "100%",
+        //                 alignItems: "center",
+        //                 justifyContent: "center"
+        //             }}
+        //         >
+        //             <CircularProgress />
+        //         </Box>
+        //     )
+        // }
+    
+        // const hospitals = hospitalMetric ? hospitalMetric.items?.map(item => ({
+        //     nome: item.name,
+        //     pacientes: item.quantitypatient || 0,
+        //     medicos: item.quantitydoctors || 0,  
+        //     hospitais: 1
+        // })) ?? [] : []
+
+        // const states = statesMetric ? statesMetric.items?.map(item => ({
+        //     nome: item.name,
+        //     pacientes: item.quantitypatient || 0,
+        //     medicos: item.quantitydoctors || 0,
+        //     hospitais: item.quantityhospital || 0
+        // })) ?? [] : []
 
 
     const dadosPorEstado = {
@@ -36,14 +67,6 @@ export const Maps = () => {
         "Santa Catarina": { pacientes: 750, medicos: 120, hospitais: 10 },
         "Rio Grande do Sul": { pacientes: 820, medicos: 130, hospitais: 12 },
     };
-
-    // const hospitaisParaExibir = dadosJsonHospitals.map(item => ({
-    //     nome: item.nome,
-    //     pacientes: item.pacientes,
-    //     medicos: item.medicos,
-    //     hospitais: item.hospitais,
-    //     coordenadas: [item.latitude, item.longitude]
-    // }));
 
     const hospitaisParaExibir: HospitalData[] = [
         {
