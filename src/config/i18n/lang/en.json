@@ -42,6 +42,9 @@
     "patient_information": "Patient information",
     "doctors": "Doctors",
     "doctor_information": "Doctor information",
-    "description": "Description"
+    "description": "Description",
+    "map_title_hospital": "Map of hospitals",
+    "map_title_state": "Map of states",
+    "map_title": "Maps"
   }
 }

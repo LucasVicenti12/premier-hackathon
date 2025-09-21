@@ -1,37 +1,42 @@
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useRef, useId } from "react";
 import { Box } from "@mui/material";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
-interface CustomAmchartsData {
+interface CustomBarCharsData {
   data: {
     category: string;
-    value1: number;
-    value2: number;
+    value: number;
   }[];
 }
 
-export default function CustomAmcharts({ data }: CustomAmchartsData) {
-  useLayoutEffect(() => {
-    let root = am5.Root.new("chartdiv");
+export default function CustomBarChars({ data }: CustomBarCharsData) {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const uniqueId = useId();
 
+  useLayoutEffect(() => {
+    if (!chartRef.current) return;
+
+    const root = am5.Root.new(chartRef.current);
     root.setThemes([am5themes_Animated.new(root)]);
 
-    let chart = root.container.children.push(
+    const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
         panY: false,
         layout: root.verticalLayout,
       })
     );
 
-    let yAxis = chart.yAxes.push(
+    // Eixo Y
+    const yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
         renderer: am5xy.AxisRendererY.new(root, {}),
       })
     );
 
-    let xAxis = chart.xAxes.push(
+    // Eixo X
+    const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
         renderer: am5xy.AxisRendererX.new(root, {}),
         categoryField: "category",
@@ -39,29 +44,20 @@ export default function CustomAmcharts({ data }: CustomAmchartsData) {
     );
     xAxis.data.setAll(data);
 
-    let series1 = chart.series.push(
+    // Série única de barras
+    const series = chart.series.push(
       am5xy.ColumnSeries.new(root, {
-        name: "Value 1",
+        name: "Valor",
         xAxis: xAxis,
         yAxis: yAxis,
-        valueYField: "value1",
+        valueYField: "value",
         categoryXField: "category",
       })
     );
-    series1.data.setAll(data);
+    series.data.setAll(data);
 
-    let series2 = chart.series.push(
-      am5xy.ColumnSeries.new(root, {
-        name: "Value 2",
-        xAxis: xAxis,
-        yAxis: yAxis,
-        valueYField: "value2",
-        categoryXField: "category",
-      })
-    );
-    series2.data.setAll(data);
-
-    let legend = chart.children.push(am5.Legend.new(root, {}));
+    // Legend opcional
+    const legend = chart.children.push(am5.Legend.new(root, {}));
     legend.data.setAll(chart.series.values);
 
     chart.set("cursor", am5xy.XYCursor.new(root, {}));
@@ -69,7 +65,7 @@ export default function CustomAmcharts({ data }: CustomAmchartsData) {
     return () => {
       root.dispose();
     };
-  }, [data]); // <- importante! se os dados mudarem, recria o gráfico
+  }, [data]);
 
-  return <Box id="chartdiv" sx={{ width: "100%", height: "500px" }} />;
+  return <Box ref={chartRef} id={`chart-${uniqueId}`} sx={{ width: "100%", height: "500px" }} />;
 }
