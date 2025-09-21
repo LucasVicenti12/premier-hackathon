@@ -23,8 +23,8 @@ export default function CustomBarChars({ data }: CustomBarCharsData) {
 
     const chart = root.container.children.push(
       am5xy.XYChart.new(root, {
-        panY: false,
-        layout: root.verticalLayout,
+        // Altera o layout para horizontal, o que já inverte a orientação
+        layout: root.horizontalLayout,
       })
     );
 
@@ -48,22 +48,20 @@ export default function CustomBarChars({ data }: CustomBarCharsData) {
       })
     );
 
-    // Série única de barras
+    // Série de colunas agora com as configurações para um gráfico horizontal
     const series = chart.series.push(
       am5xy.ColumnSeries.new(root, {
         name: "Valor",
         xAxis: xAxis,
         yAxis: yAxis,
-        valueYField: "value",
-        categoryXField: "category",
+        // Altera os campos para a nova orientação dos eixos
+        valueXField: "value",
+        categoryYField: "category",
       })
     );
     series.data.setAll(data);
 
-    // Legend opcional
-    const legend = chart.children.push(am5.Legend.new(root, {}));
-    legend.data.setAll(chart.series.values);
-
+    // Adiciona o cursor para interatividade
     chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
     return () => {
