@@ -19,6 +19,7 @@
     "processed_at": "Procesado",
     "started_processing_at": "Procesamiento iniciado",
     "process_button": "Procesar archivo",
+    "retry_file": "Intentar de nuevo",
     "PENDING": "Pendiente",
     "PROCESSING": "Procesando",
     "ERROR": "Error en el procesamiento",

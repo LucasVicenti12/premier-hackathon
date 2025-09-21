@@ -19,6 +19,7 @@
     "processed_at": "Processed",
     "started_processing_at": "Stated processing",
     "process_button": "Process file",
+    "retry_file": "Retry",
     "PENDING": "Pending",
     "PROCESSING": "Processing",
     "ERROR": "Processing error",
