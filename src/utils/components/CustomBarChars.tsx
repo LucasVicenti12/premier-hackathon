@@ -28,21 +28,25 @@ export default function CustomBarChars({ data }: CustomBarCharsData) {
       })
     );
 
-    // Eixo Y
+    // Eixo Y agora será de categorias (os nomes)
     const yAxis = chart.yAxes.push(
-      am5xy.ValueAxis.new(root, {
-        renderer: am5xy.AxisRendererY.new(root, {}),
-      })
-    );
-
-    // Eixo X
-    const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
-        renderer: am5xy.AxisRendererX.new(root, {}),
+        renderer: am5xy.AxisRendererY.new(root, {
+          // A propriedade `inversed: true` é opcional, mas pode ser útil para ordenar os dados
+          // de baixo para cima, seguindo a ordem do array.
+          inversed: true,
+        }),
         categoryField: "category",
       })
     );
-    xAxis.data.setAll(data);
+    yAxis.data.setAll(data);
+    
+    // Eixo X agora será de valores (os números)
+    const xAxis = chart.xAxes.push(
+      am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererX.new(root, {}),
+      })
+    );
 
     // Série única de barras
     const series = chart.series.push(
