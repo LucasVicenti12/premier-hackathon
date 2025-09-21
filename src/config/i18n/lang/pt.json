@@ -40,6 +40,7 @@
     "longitude": "Longitude",
     "hospital_information": "Informações do hospital",
     "patient_information": "Informações do paciente",
-    "doctors": "Médicos"
+    "doctors": "Médicos",
+    "description": "Descrição"
   }
 }

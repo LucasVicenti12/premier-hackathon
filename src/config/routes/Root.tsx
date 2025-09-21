@@ -6,7 +6,8 @@ import {Hospitals} from "../../modules/hospitals/page/Hospitals.tsx";
 import {HospitalDetail} from "../../modules/hospitals/page/HospitalDetail.tsx";
 import {PatientManagerDetail} from "../../modules/patient/page/PatientManagerDetail.tsx";
 import {DoctorManager} from "../../modules/doctor/page/DoctorManager.tsx";
-import { Home } from "../../modules/home/page/Home.tsx";
+import {Home} from "../../modules/home/page/Home.tsx";
+import {CidTableManager} from "../../modules/cidtable/page/CidTableManager.tsx";
 
 export const Root = () => (
     <BrowserRouter basename={"/app"}>
@@ -43,6 +44,11 @@ export const Root = () => (
                 <Route
                     path={"/patientManager"}
                     element={<PatientManager/>}
+                />
+
+                <Route
+                    path={"/cidTable"}
+                    element={<CidTableManager/>}
                 />
 
                 <Route

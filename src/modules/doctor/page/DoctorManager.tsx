@@ -7,7 +7,6 @@ import {EntityType} from "../../filemanager/entities/entities.ts";
 import {FileUpload} from "../../filemanager/components/FileUpload.tsx";
 
 export const DoctorManager = () => {
-
     const { t } = useTranslation()
 
     const setPage = useSetAtom(DoctorState.Page)
@@ -88,7 +87,6 @@ export const DoctorManager = () => {
                     }
                 </tbody>
             </CustomTable>
-
         </Box>
     )
 }
